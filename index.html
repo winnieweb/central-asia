@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Central Asia">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230A0A0A'/%3E%3Ctext y='130' x='15' font-size='130' font-family='system-ui'%3E🌍%3C/text%3E%3C/svg%3E">
+<title>Central Asia 2025</title>
+<style>
+:root {
+  --bg:#0A0A0A; --bg2:#141414; --bg3:#1C1C1E; --bg4:#2C2C2E;
+  --sep:rgba(255,255,255,0.08); --sep2:rgba(255,255,255,0.05);
+  --text1:#FFFFFF; --text2:rgba(255,255,255,0.72);
+  --text3:rgba(255,255,255,0.40); --text4:rgba(255,255,255,0.22);
+  --accent:#D4A853; --accent2:rgba(212,168,83,0.14); --accent3:rgba(212,168,83,0.06);
+  --blue:#0A84FF; --blue2:rgba(10,132,255,0.14);
+  --green:#30D158; --green2:rgba(48,209,88,0.12);
+  --orange:#FF9F0A; --orange2:rgba(255,159,10,0.12);
+  --purple:#BF5AF2; --purple2:rgba(191,90,242,0.12);
+  --red:#FF453A; --red2:rgba(255,69,58,0.10);
+  --safe-top:env(safe-area-inset-top,0px); --safe-bot:env(safe-area-inset-bottom,0px);
+  --nav-h:68px; --r:12px; --rs:8px;
+  /* Country colours */
+  --uz:#E8855A; --uz2:rgba(232,133,90,0.16); --uz3:rgba(232,133,90,0.07); --uzb:rgba(232,133,90,0.28);
+  --kz:#34AADC; --kz2:rgba(52,170,220,0.16); --kz3:rgba(52,170,220,0.07); --kzb:rgba(52,170,220,0.28);
+  --kg:#4CD964; --kg2:rgba(76,217,100,0.15); --kg3:rgba(76,217,100,0.06); --kgb:rgba(76,217,100,0.28);
+  --hm:rgba(255,255,255,0.45); --hm2:rgba(255,255,255,0.08); --hm3:rgba(255,255,255,0.04); --hmb:rgba(255,255,255,0.15);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;background:var(--bg);}
+body{background:var(--bg);color:var(--text1);font-family:-apple-system,'SF Pro Text','SF Pro Display','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.4;min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;}
+.wrap{max-width:430px;margin:0 auto;padding-bottom:calc(var(--nav-h) + var(--safe-bot) + 24px);}
+
+/* INSTALL BANNER */
+.install-banner{display:flex;align-items:center;gap:12px;background:rgba(255,159,10,.12);border-bottom:1px solid rgba(255,159,10,.2);padding:12px 16px;padding-top:calc(12px + var(--safe-top));font-size:13px;color:var(--text2);}
+.ib-icon{font-size:20px;flex-shrink:0;}.ib-text{flex:1;}.ib-text strong{color:var(--orange);}
+.ib-close{background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center;}
+@media(display-mode:standalone){.install-banner{display:none;}}
+
+/* HERO */
+.hero{background:linear-gradient(180deg,#1C1208 0%,var(--bg) 100%);padding:calc(24px + var(--safe-top)) 20px 24px;border-bottom:1px solid var(--sep);}
+@media(display-mode:standalone){.hero{padding-top:calc(56px + var(--safe-top));}}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.hero h1{font-size:clamp(28px,7vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.05;color:var(--text1);margin-bottom:6px;}
+.hero-sub{font-size:14px;color:var(--text3);margin-bottom:16px;}
+.hero-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{background:var(--bg3);border:1px solid var(--sep);border-radius:20px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--text2);font-family:inherit;cursor:pointer;transition:opacity .15s;-webkit-tap-highlight-color:transparent;}
+.chip:active{opacity:.7;}
+.chip-uz{background:var(--uz3);border-color:var(--uzb);color:var(--uz);}
+.chip-kz{background:var(--kz3);border-color:var(--kzb);color:var(--kz);}
+.chip-kg{background:var(--kg3);border-color:var(--kgb);color:var(--kg);}
+.chip-tj{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.2);color:var(--red);}
+.chip.friend{background:var(--purple2);border-color:rgba(191,90,242,.25);color:var(--purple);}
+
+/* SHARE STRIP */
+.share-strip{display:flex;align-items:center;gap:12px;background:var(--blue2);border-bottom:1px solid rgba(10,132,255,.18);padding:11px 16px;}
+.ss-icon{font-size:16px;flex-shrink:0;}.ss-text{flex:1;font-size:12px;color:var(--text2);}
+.ss-text strong{color:var(--blue);font-weight:600;}
+.share-btn{background:var(--blue);border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:600;color:#fff;cursor:pointer;font-family:inherit;min-height:34px;transition:opacity .15s;}
+.share-btn:active{opacity:.75;}
+
+/* SYNC */
+.sync-badge{position:fixed;top:calc(10px + var(--safe-top));right:12px;background:var(--green2);border:1px solid rgba(48,209,88,.3);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--green);z-index:50;opacity:0;transition:opacity .3s;}
+.sync-badge.show{opacity:1;}
+
+/* COUNTRY */
+.country{margin:16px 12px 0;border-radius:14px;overflow:hidden;border:1px solid var(--sep);background:var(--bg2);}
+#c-uz{--cc:var(--uz);--cc2:var(--uz2);--cc3:var(--uz3);--ccb:var(--uzb);}
+#c-kz{--cc:var(--kz);--cc2:var(--kz2);--cc3:var(--kz3);--ccb:var(--kzb);}
+#c-kg{--cc:var(--kg);--cc2:var(--kg2);--cc3:var(--kg3);--ccb:var(--kgb);}
+#c-home{--cc:var(--hm);--cc2:var(--hm2);--cc3:var(--hm3);--ccb:var(--hmb);}
+.country.open{border-color:var(--ccb,rgba(255,255,255,.15));}
+.country-toggle{width:100%;display:flex;align-items:center;gap:14px;padding:15px 16px;cursor:pointer;border:none;background:linear-gradient(135deg,var(--cc2,rgba(255,255,255,.06)) 0%,transparent 100%);border-bottom:1px solid var(--ccb,var(--sep));-webkit-tap-highlight-color:transparent;min-height:60px;}
+.country-toggle:active{opacity:.82;}
+.c-flag{font-size:24px;flex-shrink:0;}
+.c-info{flex:1;text-align:left;}
+.c-name{font-size:17px;font-weight:700;color:var(--cc,var(--text1));letter-spacing:-.02em;}
+.c-dates{font-size:12px;color:var(--text3);margin-top:2px;}
+.c-chevron{width:24px;height:24px;border-radius:50%;background:var(--cc2,var(--bg3));display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--cc,var(--text3));transition:transform .3s cubic-bezier(.4,0,.2,1);flex-shrink:0;}
+.country.open .c-chevron{transform:rotate(90deg);}
+.country-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);}
+.country.open .country-body{max-height:99999px;}
+
+/* FRIEND BANNER */
+.friend-banner{margin:10px 10px 0;background:var(--purple2);border:1px solid rgba(191,90,242,.22);border-radius:var(--rs);padding:10px 13px;display:flex;align-items:center;gap:10px;}
+.fb-icon{font-size:18px;flex-shrink:0;}.fb-text{font-size:12px;color:rgba(191,90,242,.9);line-height:1.45;}
+.fb-text strong{color:var(--purple);font-weight:600;}
+.friend-tag{display:inline-flex;align-items:center;gap:4px;background:var(--purple2);border:1px solid rgba(191,90,242,.25);border-radius:20px;padding:3px 8px;font-size:10px;font-weight:600;color:var(--purple);margin-bottom:10px;}
+
+/* DAY CARD */
+#c-uz .day-card{--cc:var(--uz);--cc2:var(--uz2);--cc3:var(--uz3);--ccb:rgba(232,133,90,.15);}
+#c-kz .day-card{--cc:var(--kz);--cc2:var(--kz2);--cc3:var(--kz3);--ccb:rgba(52,170,220,.15);}
+#c-kg .day-card{--cc:var(--kg);--cc2:var(--kg2);--cc3:var(--kg3);--ccb:rgba(76,217,100,.15);}
+#c-home .day-card{--cc:var(--hm);--cc2:var(--hm2);--cc3:var(--hm3);--ccb:rgba(255,255,255,.08);}
+.day-card{margin:8px 10px;border-radius:var(--r);border:1px solid var(--ccb,var(--sep2));overflow:hidden;background:var(--bg3);opacity:.95;}
+.day-card.open{border-color:var(--cc,var(--sep));opacity:1;}
+.day-card.friend-day{border-color:rgba(191,90,242,.22);}
+.day-card.friend-day.open{border-color:rgba(191,90,242,.4);}
+.day-header{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;min-height:58px;}
+.day-header:active{background:rgba(255,255,255,.025);}
+
+/* Badge: Day N = hero, date = secondary */
+.day-badge{width:52px;min-height:52px;border-radius:10px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--cc2,var(--bg4));border:1px solid var(--ccb,var(--sep2));padding:4px 0;gap:0;}
+.badge-daylabel{font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cc,var(--text3));opacity:.7;line-height:1;}
+.badge-daynum{font-size:20px;font-weight:800;color:var(--cc,var(--text1));letter-spacing:-.03em;line-height:1;}
+.badge-date{font-size:10px;font-weight:500;color:var(--text3);line-height:1;margin-top:3px;}
+.day-info{flex:1;min-width:0;}
+.day-title{font-size:14px;font-weight:600;color:var(--text1);line-height:1.25;letter-spacing:-.01em;}
+.day-sub{font-size:12px;color:var(--text3);margin-top:3px;}
+.d-chevron{width:20px;height:20px;border-radius:50%;background:var(--cc2,var(--bg4));display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--cc,var(--text3));transition:transform .25s;flex-shrink:0;}
+.day-card.open .d-chevron{transform:rotate(90deg);}
+.day-body{display:none;padding:0 12px 12px;border-top:1px solid var(--ccb,var(--sep2));}
+.day-card.open .day-body{display:block;animation:fadeUp .16s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+
+/* ITEMS */
+.item-list{display:flex;flex-direction:column;gap:4px;padding-top:8px;}
+.item{display:flex;align-items:stretch;border-radius:var(--rs);overflow:hidden;border:1px solid var(--sep2);background:rgba(255,255,255,.025);min-height:44px;}
+.item.type-hotel    {background:rgba(212,168,83,.06);  border-color:rgba(212,168,83,.14);}
+.item.type-flight   {background:var(--blue2);           border-color:rgba(10,132,255,.2);}
+.item.type-train    {background:var(--orange2);          border-color:rgba(255,159,10,.2);}
+.item.type-activity {background:rgba(255,255,255,.025); border-color:var(--sep2);}
+.item.type-restaurant{background:var(--red2);           border-color:rgba(255,69,58,.15);}
+.item.type-note     {background:var(--green2);           border-color:rgba(48,209,88,.14);}
+
+.item-left{flex:1;min-width:0;display:flex;align-items:flex-start;gap:10px;padding:10px 10px;}
+.item-icon{font-size:16px;flex-shrink:0;margin-top:1px;line-height:1;}
+.item-body{flex:1;min-width:0;}
+.item-name{font-size:13px;font-weight:500;color:var(--text1);line-height:1.35;}
+.item.type-hotel    .item-name{color:var(--accent);font-weight:600;}
+.item.type-flight   .item-name{color:#7AB8F5;font-weight:600;}
+.item.type-train    .item-name{color:var(--orange);font-weight:600;}
+.item-sub{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.4;}
+.item-pnr{font-size:11px;color:var(--blue);margin-top:2px;font-weight:500;}
+
+/* LINK BADGES — buttons, not anchors, so they work in sandboxed iframes too */
+.link-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  margin-top:6px;padding:5px 10px;border-radius:6px;
+  font-size:11px;font-weight:600;letter-spacing:.02em;
+  cursor:pointer;border:none;font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .15s;
+}
+.link-badge:active{opacity:.7;}
+.lb-flight{background:var(--blue2);color:var(--blue);border:1px solid rgba(10,132,255,.3);}
+.lb-train {background:var(--orange2);color:var(--orange);border:1px solid rgba(255,159,10,.3);}
+.lb-map   {background:var(--green2);color:var(--green);border:1px solid rgba(48,209,88,.3);}
+.lb-hotel {background:rgba(212,168,83,.12);color:var(--accent);border:1px solid rgba(212,168,83,.3);}
+
+/* ITEM ACTION BUTTONS */
+.item-actions{display:flex;flex-direction:column;border-left:1px solid var(--sep2);flex-shrink:0;}
+.item-btn{flex:1;min-width:38px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text4);transition:background .12s,color .12s;}
+.item-btn.edit-btn{border-bottom:1px solid var(--sep2);}
+.item-btn.edit-btn:active{color:var(--accent);background:var(--accent3);}
+.item-btn.del-btn:active{color:var(--red);background:var(--red2);}
+
+/* ADD BUTTON */
+.add-row{margin:6px 10px 0;}
+.add-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:var(--rs);border:1px dashed rgba(255,255,255,.14);background:none;color:var(--text3);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;min-height:42px;transition:all .15s;}
+.add-btn:active{background:rgba(255,255,255,.06);color:var(--text2);}
+
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--sep);display:flex;align-items:stretch;padding-bottom:var(--safe-bot);z-index:100;height:calc(var(--nav-h) + var(--safe-bot));}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0 4px;background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:54px;transition:background .15s;}
+.nav-btn:active,.nav-btn.active-nav{background:rgba(255,255,255,.05);}
+.nb-icon{font-size:22px;line-height:1;}
+.nb-label{font-size:10px;font-weight:500;color:var(--text3);letter-spacing:.03em;text-transform:uppercase;}
+.nav-btn.active-nav .nb-label{color:var(--accent);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s;}
+.modal-overlay.show{opacity:1;pointer-events:all;}
+.modal{background:var(--bg3);border:1px solid var(--sep);border-radius:20px 20px 0 0;padding:20px 18px;padding-bottom:calc(20px + var(--safe-bot));width:100%;max-width:430px;transform:translateY(24px);transition:transform .26s cubic-bezier(.4,0,.2,1);max-height:92dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.modal-overlay.show .modal{transform:translateY(0);}
+.modal-handle{width:36px;height:4px;border-radius:2px;background:var(--bg4);margin:0 auto 16px;}
+.modal-title{font-size:18px;font-weight:700;color:var(--text1);letter-spacing:-.02em;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.modal-close{margin-left:auto;background:var(--bg4);border:none;color:var(--text2);font-size:16px;font-weight:600;cursor:pointer;border-radius:50%;min-width:30px;min-height:30px;display:flex;align-items:center;justify-content:center;}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px;}
+.type-tile{padding:9px 4px;border-radius:var(--rs);border:1px solid var(--sep2);background:var(--bg4);color:var(--text3);font-size:11px;font-weight:600;font-family:inherit;cursor:pointer;text-align:center;min-height:50px;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .15s;}
+.type-tile .tt-icon{font-size:18px;}
+.type-tile.active{background:var(--accent2);border-color:rgba(212,168,83,.3);color:var(--accent);}
+.form-group{margin-bottom:12px;}
+.form-label{display:block;font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
+.form-input,.form-textarea{width:100%;background:var(--bg4);border:1px solid var(--sep);border-radius:var(--rs);padding:12px 13px;font-size:16px;color:var(--text1);font-family:inherit;outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--accent);}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text4);}
+.form-textarea{resize:none;height:72px;font-size:15px;}
+.form-submit{width:100%;padding:14px;border-radius:var(--rs);background:var(--accent);border:none;color:#000;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:4px;min-height:50px;transition:opacity .15s;}
+.form-submit:active{opacity:.8;}
+.del-entry-btn{width:100%;padding:12px;border-radius:var(--rs);background:var(--red2);border:1px solid rgba(255,69,58,.2);color:var(--red);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;margin-top:8px;min-height:44px;}
+.del-entry-btn:active{background:rgba(255,69,58,.18);}
+
+/* TOAST */
+.toast{position:fixed;bottom:calc(var(--nav-h) + var(--safe-bot) + 12px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--bg3);border:1px solid var(--sep);border-radius:22px;padding:10px 18px;font-size:13px;font-weight:500;color:var(--text1);z-index:300;opacity:0;pointer-events:none;transition:opacity .24s,transform .24s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.empty-state{padding:10px 2px;font-size:12px;font-weight:500;color:var(--text4);}
+
+@media(max-height:500px) and (orientation:landscape){
+  .hero{padding-top:calc(8px + var(--safe-top));padding-bottom:12px;}
+  .hero h1{font-size:22px;}.hero-chips{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="install-banner" id="installBanner">
+  <span class="ib-icon">🗺️</span>
+  <div class="ib-text" id="installText"><strong>Add to Home Screen</strong> — tap Share › "Add to Home Screen" in Safari</div>
+  <button class="ib-close" onclick="dismissBanner()">×</button>
+</div>
+<div class="sync-badge" id="syncBadge">✓ Synced</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-eyebrow">29 May – 26 Jun 2025 · 29 Days</div>
+    <h1>Central Asia</h1>
+    <div class="hero-sub">Uzbekistan · Kazakhstan · Kyrgyzstan</div>
+    <div class="hero-chips">
+      <button class="chip chip-uz" onclick="jumpTo('c-uz','nav-uz')">🇺🇿 Uzbekistan</button>
+      <button class="chip chip-kz" onclick="jumpTo('c-kz','nav-kz')">🇰🇿 Kazakhstan</button>
+      <button class="chip chip-kg" onclick="jumpTo('c-kg','nav-kg')">🇰🇬 Kyrgyzstan</button>
+      <button class="chip chip-tj">🇹🇯 Tajikistan day</button>
+      <button class="chip friend" onclick="jumpTo('c-uz','nav-uz')">👥 Friend Jun 10–17</button>
+    </div>
+  </div>
+  <div class="share-strip">
+    <span class="ss-icon">🔗</span>
+    <div class="ss-text"><strong>Collaborative</strong> — anyone with this link can edit</div>
+    <button class="share-btn" onclick="copyShareLink()">Share</button>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-btn" id="nav-uz" onclick="jumpTo('c-uz','nav-uz')"><span class="nb-icon">🇺🇿</span><span class="nb-label">Uzbek</span></button>
+  <button class="nav-btn" id="nav-kz" onclick="jumpTo('c-kz','nav-kz')"><span class="nb-icon">🇰🇿</span><span class="nb-label">Kazakh</span></button>
+  <button class="nav-btn" id="nav-kg" onclick="jumpTo('c-kg','nav-kg')"><span class="nb-icon">🇰🇬</span><span class="nb-label">Kyrgyz</span></button>
+  <button class="nav-btn" id="nav-home" onclick="jumpTo('c-home','nav-home')"><span class="nb-icon">✈️</span><span class="nb-label">Home</span></button>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="closeBg(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title"><span id="m-icon">📌</span><span id="m-title">Add Item</span><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="type-grid" id="typeGrid"></div>
+    <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="fName" type="text" maxlength="100" autocomplete="off" placeholder="e.g. The Registan"></div>
+    <div class="form-group" id="subGroup"><label class="form-label" id="subLabel">Details / Time</label><input class="form-input" id="fSub" type="text" maxlength="120" autocomplete="off" placeholder="e.g. 08:30 → 10:15"></div>
+    <div class="form-group" id="pnrGroup" style="display:none"><label class="form-label">PNR / Booking Ref</label><input class="form-input" id="fPnr" type="text" maxlength="80" autocomplete="off" placeholder="e.g. JFPZZZ | XUBE5E"></div>
+    <div class="form-group"><label class="form-label">Notes</label><textarea class="form-textarea" id="fNote" placeholder="Extra info, tips, address…"></textarea></div>
+    <div class="form-group"><label class="form-label">Link (Google Maps / Flight URL)</label><input class="form-input" id="fLink" type="url" maxlength="400" autocomplete="off" placeholder="https://maps.google.com/?q=…"></div>
+    <button class="form-submit" onclick="saveItem()">Save</button>
+    <button class="del-entry-btn" id="delEntryBtn" style="display:none" onclick="deleteCurrentItem()">Delete this item</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════
+// OPEN EXTERNAL LINK
+// Works inside sandboxed iframes by using window.open with full params
+// ═══════════════════════════════════════
+function openLink(url) {
+  if (!url) return;
+  var w = window.open(url, '_blank', 'noopener,noreferrer,width=800,height=600');
+  if (!w || w.closed || typeof w.closed === 'undefined') {
+    // Popup blocked — fallback: navigate current window
+    window.location.href = url;
+  }
+}
+
+// ═══════════════════════════════════════
+// ITEM TYPES
+// ═══════════════════════════════════════
+var TYPES = [
+  {id:'hotel',    icon:'🏨', label:'Hotel',      subLabel:'Check-in / nights', showPnr:false},
+  {id:'flight',   icon:'✈️',  label:'Flight',     subLabel:'Route & times',     showPnr:true},
+  {id:'train',    icon:'🚂', label:'Train',       subLabel:'Route & times',     showPnr:true},
+  {id:'activity', icon:'📍', label:'Activity',    subLabel:'Hours / tips',      showPnr:false},
+  {id:'restaurant',icon:'🍽️',label:'Restaurant', subLabel:'Address / hours',   showPnr:false},
+  {id:'note',     icon:'📝', label:'Note',        subLabel:'',                   showPnr:false},
+];
+
+function mkId() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+
+function fl(name, sub, pnr, link) {
+  return {id:mkId(), type:'flight', name:name, sub:sub, pnr:'PNR: '+pnr, note:'', link:link};
+}
+function tr(name, sub, ref) {
+  return {id:mkId(), type:'train', name:name, sub:sub, pnr:'Booking: '+ref, note:'', link:'https://eticket.railway.uz/en/home'};
+}
+function ht(name, sub, mapLink) {
+  // mapLink is a direct Google Maps URL; if omitted we auto-generate from name
+  var link = mapLink || ('https://maps.google.com/?q=' + encodeURIComponent(name));
+  return {id:mkId(), type:'hotel', name:name, sub:sub, pnr:'', note:'', link:link};
+}
+function ac(name, note, link) {
+  return {id:mkId(), type:'activity', name:name, sub:'', pnr:'', note:note||'', link:link||''};
+}
+function nt(text) {
+  return {id:mkId(), type:'note', name:text, sub:'', pnr:'', note:'', link:''};
+}
+
+// ═══════════════════════════════════════
+// BASE DATA
+// ═══════════════════════════════════════
+var BASE_DATA = {
+  d529:[
+    fl('SIN → DEL  ·  AI 2383','23:00 → 02:30 (+1)','JFPZZZ | XUBE5E','https://www.google.com/search?q=Air+India+AI+2383+flight+status'),
+    fl('DEL → TAS  ·  AI 7109','13:45 → 16:15','JFPZZZ | XUBE5E','https://www.google.com/search?q=Air+India+AI+7109+flight+status'),
+    nt('🌙 Long travel day — get SIM card & cash at Tashkent airport before the domestic terminal'),
+  ],
+  d530:[
+    ht('Said-Maxsum','May 30 – Jun 2 · 3 nights · Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
+    fl('TAS → UGC  ·  HY 57','20:40 → 22:10','YCDSAA','https://www.google.com/search?q=Uzbekistan+Airways+HY+57+flight+status'),
+    nt('🚕 ~30 min taxi from Urgench airport to Khiva — negotiate price ~30,000–50,000 UZS'),
+  ],
+  d531:[
+    ht('Said-Maxsum','Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
+    ac('Ichan Kala (Full Day)','Buy combo ticket at entrance — covers most monuments','https://maps.google.com/?q=Ichan+Kala+Khiva'),
+    ac('Kalta Minor Minaret','','https://maps.google.com/?q=Kalta+Minor+Minaret+Khiva'),
+    ac('Walk the City Walls','Best at sunset for panoramic views','https://maps.google.com/?q=City+Walls+Ichan+Kala+Khiva'),
+  ],
+  d601:[
+    ht('Said-Maxsum','Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
+    ac('Islam Khodja Minaret','Tallest in Khiva — climb for panoramic views','https://maps.google.com/?q=Islam+Khodja+Minaret+Khiva'),
+    ac('Pahlavan Mahmud Mausoleum','Stunning tilework inside','https://maps.google.com/?q=Pahlavan+Mahmud+Mausoleum+Khiva'),
+    ac('Craft workshops & bazaars in Ichan Kala',''),
+  ],
+  d602:[
+    ht('Shaxruza Shahzoda Guest House','Jun 2–5 · 3 nights · Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
+    tr('Khiva → Bukhara','15:14 → 21:22  ·  ~6 hours','Train 126 | 73815427926254'),
+    nt('🍑 Morning explore Khiva before afternoon train — pick up dried fruits for the journey'),
+  ],
+  d603:[
+    ht('Shaxruza Shahzoda Guest House','Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
+    ac('Po-i-Kalyan Complex','Kalon Minaret, mosque & madrasah facing each other','https://maps.google.com/?q=Po-i-Kalyan+Bukhara'),
+    ac('Bolo Hauz Mosque','Carved wooden columns reflected in the pool','https://maps.google.com/?q=Bolo+Hauz+Mosque+Bukhara'),
+    ac('Toqi Telpak Furushon Bazaar','Domed 16th-c trading house — best for souvenirs','https://maps.google.com/?q=Toqi+Telpak+Furushon+Bukhara'),
+  ],
+  d604:[
+    ht('Shaxruza Shahzoda Guest House','Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
+    ac('Lyabi-Khauz Square','Heart of old Bukhara — dine by the ancient pool at night','https://maps.google.com/?q=Lyabi-Khauz+Bukhara'),
+    ac('Abdulaziz Han Madrassah','Intricate muqarnas and tilework inside','https://maps.google.com/?q=Abdulaziz+Khan+Madrassah+Bukhara'),
+    ac('Bozori Kord Bathhouse','Original working bathhouse — scrub & relax','https://maps.google.com/?q=Bozori+Kord+Bathhouse+Bukhara'),
+    ac('Chor Minor','Quirky 4-minaret gatehouse in the back streets','https://maps.google.com/?q=Chor+Minor+Bukhara'),
+  ],
+  d605:[
+    ht('MUSAVVIR','Jun 5–9 · 4 nights · Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
+    tr('Bukhara → Samarkand','16:51 → 19:13','Train 709 (Sharq) | 73915428146393'),
+  ],
+  d606:[
+    ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
+    ac('Day trip to Tajikistan 🇹🇯','Oybek border crossing — most common route from Samarkand'),
+    ac('Tajikistan e-Visa required','Apply before this day at evisa.tj','https://www.evisa.tj/index.evisa.html'),
+  ],
+  d607:[
+    ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
+    ac('The Registan','Opens 8am — arrive early. Three madrasahs in breathtaking symmetry','https://maps.google.com/?q=The+Registan+Samarkand'),
+    ac('Gur-E-Amir Mausoleum','Tomb of Tamerlane — stunning blue dome','https://maps.google.com/?q=Gur-e-Amir+Mausoleum+Samarkand'),
+    ac('Shah-i-Zinda Necropolis','Avenue of tilework mausoleums, deeply spiritual','https://maps.google.com/?q=Shah-i-Zinda+Samarkand'),
+  ],
+  d608:[
+    ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
+    ac('Siab Bazaar','Famous for non bread & fresh produce','https://maps.google.com/?q=Siab+Bazaar+Samarkand'),
+    ac('University Boulevard','Near Ulugbek Observatory','https://maps.google.com/?q=Ulugbek+Observatory+Samarkand'),
+    ac('Mirror Mosque (Hazrat Hizr)','Elevated mosque with panoramic city views','https://maps.google.com/?q=Hazrat+Hizr+Mosque+Samarkand'),
+  ],
+  d609:[
+    ht('Medina Hotel Samarkand','Jun 9–10 · 1 night','https://maps.google.com/?q=Medina+Hotel+Samarkand'),
+    ac('Ak-Saray Palace — Shakhrisabz','~80km south · Tamerlane\'s White Palace ruins','https://maps.google.com/?q=Ak-Saray+Palace+Shakhrisabz'),
+    ac('Kok-Gumbaz Mosque','Blue-domed mosque in the same complex','https://maps.google.com/?q=Kok-Gumbaz+Mosque+Shakhrisabz'),
+  ],
+  d610:[
+    ht('Medina Hotel Samarkand','Check-out day','https://maps.google.com/?q=Medina+Hotel+Samarkand'),
+    ac('The Registan','8am — golden morning light. Friend joins!','https://maps.google.com/?q=The+Registan+Samarkand'),
+    ac('Gur-E-Amir Mausoleum','','https://maps.google.com/?q=Gur-e-Amir+Mausoleum+Samarkand'),
+    ac('Shah-i-Zinda Necropolis','','https://maps.google.com/?q=Shah-i-Zinda+Samarkand'),
+    ac('Siab Bazaar','Pick up snacks for the night train','https://maps.google.com/?q=Siab+Bazaar+Samarkand'),
+    tr('Samarkand → Tashkent','19:23 → 23:06','Train 709 (Sharq) | 74015428149053'),
+  ],
+  d611:[
+    ht('Tashkent Hotel','Jun 11–12 · Tashkent','https://maps.google.com/?q=Tashkent+hotel'),
+    ac('Tashkent Metro Stations','Soviet-era masterpieces — each station uniquely decorated','https://maps.google.com/?q=Tashkent+Metro'),
+    ac('Chorsu Bazaar','Blue-domed market — spices, bread, atmosphere','https://maps.google.com/?q=Chorsu+Bazaar+Tashkent'),
+    ac('Kukeldash Madrasah & Hoja Ahror Valiy Mosque','','https://maps.google.com/?q=Kukeldash+Madrasah+Tashkent'),
+    ac('Central Asian Plov Center','Best plov in Central Asia — go for lunch when freshest','https://maps.google.com/?q=Central+Asian+Plov+Center+Tashkent'),
+  ],
+  d612:[
+    ht('Tashkent Hotel','Depart to Almaty tomorrow','https://maps.google.com/?q=Tashkent+hotel'),
+    ac('State Art Museum of Uzbekistan','','https://maps.google.com/?q=State+Art+Museum+Uzbekistan+Tashkent'),
+    ac('Uzbekistan Hotel','Soviet modernist landmark','https://maps.google.com/?q=Uzbekistan+Hotel+Tashkent'),
+    ac('Museum of Victims of Political Repression','','https://maps.google.com/?q=Museum+Victims+Political+Repression+Tashkent'),
+    ac('Alisher Navoi Opera & Ballet Theatre','Book tickets in advance','https://maps.google.com/?q=Alisher+Navoi+Opera+Ballet+Tashkent'),
+  ],
+  d613:[
+    ht('Almaty Hotel','Jun 13–17 · Almaty','https://maps.google.com/?q=Almaty+hotel'),
+    fl('TAS → ALA  ·  HY 761','Morning — check booking','DCO7DR','https://www.google.com/search?q=Uzbekistan+Airways+HY+761+flight+status'),
+    ac('Panfilov Park & Zenkov Cathedral','One of the world\'s largest wooden structures — no nails','https://maps.google.com/?q=Panfilov+Park+Almaty'),
+    ac('Kok Tobe Hill','Cable car for city panoramas & Beatles statue','https://maps.google.com/?q=Kok+Tobe+Hill+Almaty'),
+  ],
+  d614:[
+    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
+    ac('Charyn & Black Canyon','Kazakhstan\'s Grand Canyon — 200m deep red rock formations','https://maps.google.com/?q=Charyn+Canyon+Kazakhstan'),
+    ac('Kolsai Lakes & Kaindy Lake','Submerged forest — turquoise water with emerging tree trunks','https://maps.google.com/?q=Kaindy+Lake+Kazakhstan'),
+    nt('⏰ Very long day 12–14h. Start early, bring warm layers.'),
+  ],
+  d615:[
+    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
+    ac('Big Almaty Lake','Turquoise glacier lake at 2,500m — permit ~1,000 KZT','https://maps.google.com/?q=Big+Almaty+Lake+Kazakhstan'),
+  ],
+  d616:[
+    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
+    ac('Kok Zhailau Hike','~12km round trip from Big Almaty Gorge — wide-open alpine meadows','https://maps.google.com/?q=Kok+Zhailau+Almaty'),
+  ],
+  d617:[
+    ht('Almaty Hotel','Friend\'s last day 👋','https://maps.google.com/?q=Almaty+hotel'),
+    ac('Arasan Baths','Soviet-era public baths — steam rooms & massage','https://maps.google.com/?q=Arasan+Baths+Almaty'),
+    ac('Green Bazaar (Zelyony)','Vibrant covered market — try kumiss','https://maps.google.com/?q=Green+Bazaar+Almaty'),
+  ],
+  d618:[
+    ht('Bishkek Hotel','Jun 18–19 · Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
+    fl('ALA → BSZ  ·  KC 107','12:25 → 14:25','','https://www.google.com/search?q=Air+Astana+KC+107+flight+status'),
+    ac('Ala-Too Square','Main square — changing of the guard ceremony','https://maps.google.com/?q=Ala-Too+Square+Bishkek'),
+    ac('Osh Bazaar','Huge chaotic market — spices, fabrics, street food','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+  ],
+  d619:[
+    ht('Bishkek Hotel','Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
+    ac('Ala Archa National Park','Hike to Ak-Sai Glacier ~6–8km · entry ~600 KGS · taxi ~40 min','https://maps.google.com/?q=Ala+Archa+National+Park+Kyrgyzstan'),
+  ],
+  d620:[
+    ht('Yurt Camp at Song Kul','Jun 20–22 · 3 nights · 3,016m altitude','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
+    ac('Horse Riding around the lake','With a local guide','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
+    ac('Stargazing','Zero light pollution — extraordinary night sky',''),
+    ac('Nomadic Meals at the Yurt','Beshbarmak, kumiss, fresh bread over wood fire',''),
+    nt('🧥 Bring warm layers — near 0°C at night. Roads are rough; 4WD recommended'),
+  ],
+  d623:[
+    ht('Bishkek Hotel','Jun 23–24 · Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
+    ac('State Historical Museum','','https://maps.google.com/?q=State+Historical+Museum+Bishkek'),
+    ac('Erkindik Boulevard restaurants','Local cafes along the boulevard','https://maps.google.com/?q=Erkindik+Boulevard+Bishkek'),
+    ac('Last souvenirs — Osh Bazaar','','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+  ],
+  d625:[
+    ht('Almaty Hotel','Jun 25 · Last night','https://maps.google.com/?q=Almaty+hotel'),
+    fl('BSZ → ALA  ·  KC 108','16:10 → 16:05 (time zone)','','https://www.google.com/search?q=Air+Astana+KC+108+flight+status'),
+    nt('🛌 Rest up before the long journey home tomorrow'),
+  ],
+  d626:[
+    fl('ALA → BKK  ·  KC 933','08:15 → 16:55','97QQ67','https://www.google.com/search?q=Air+Astana+KC+933+flight+status'),
+    fl('BKK → SIN  ·  TR 621','22:30 → 02:00 (+1)','F5BWXL','https://www.google.com/search?q=Scoot+TR+621+flight+status'),
+    nt('🎉 End of 29 days across 4 Central Asian countries. Welcome home!'),
+  ],
+};
+
+// ═══════════════════════════════════════
+// TRIP STRUCTURE
+// ═══════════════════════════════════════
+var COUNTRIES = [
+  {id:'c-uz', flag:'🇺🇿', name:'Uzbekistan', dates:'May 29 – Jun 12', open:true, days:[
+    {id:'d529',mo:'MAY',dt:'29',dayNum:1, title:'Depart Singapore',sub:'SIN → DEL → TAS'},
+    {id:'d530',mo:'MAY',dt:'30',dayNum:2, title:'Tashkent ✈ Khiva',sub:'Arrive ancient walled city'},
+    {id:'d531',mo:'MAY',dt:'31',dayNum:3, title:'Khiva — Ichan Kala Day 1',sub:'UNESCO walled inner city'},
+    {id:'d601',mo:'JUN',dt:'1', dayNum:4, title:'Khiva — Ichan Kala Day 2',sub:'Mausoleums & minarets'},
+    {id:'d602',mo:'JUN',dt:'2', dayNum:5, title:'Khiva → Bukhara',sub:'6-hour scenic train'},
+    {id:'d603',mo:'JUN',dt:'3', dayNum:6, title:'Bukhara — Sacred Quarter',sub:'Po-i-Kalyan & bazaars'},
+    {id:'d604',mo:'JUN',dt:'4', dayNum:7, title:'Bukhara — Lyabi-Khauz',sub:'Bathhouse & night strolls'},
+    {id:'d605',mo:'JUN',dt:'5', dayNum:8, title:'Bukhara → Samarkand',sub:'Sharq high-speed train'},
+    {id:'d606',mo:'JUN',dt:'6', dayNum:9, title:'Day Trip — Tajikistan 🇹🇯',sub:'Cross border from Samarkand'},
+    {id:'d607',mo:'JUN',dt:'7', dayNum:10,title:'Samarkand — The Registan',sub:'Eternal city, timeless squares'},
+    {id:'d608',mo:'JUN',dt:'8', dayNum:11,title:'Samarkand — Bazaars & Mosque',sub:'Local life & markets'},
+    {id:'d609',mo:'JUN',dt:'9', dayNum:12,title:'Day Trip — Shakhrisabz',sub:'Ak-Saray Palace & Kok-Gumbaz'},
+    {id:'d610',mo:'JUN',dt:'10',dayNum:13,title:'Samarkand + Night Train 👥',sub:'Friend joins · → Tashkent',friend:true},
+    {id:'d611',mo:'JUN',dt:'11',dayNum:14,title:'Tashkent — Day 1 👥',sub:'Metro, plov & bazaars',friend:true},
+    {id:'d612',mo:'JUN',dt:'12',dayNum:15,title:'Tashkent — Day 2 👥',sub:'Museums, art & ballet',friend:true},
+  ]},
+  {id:'c-kz', flag:'🇰🇿', name:'Kazakhstan', dates:'Jun 13–17', open:false, days:[
+    {id:'d613',mo:'JUN',dt:'13',dayNum:16,title:'Tashkent ✈ Almaty + City 👥',sub:'Afternoon arrival',friend:true},
+    {id:'d614',mo:'JUN',dt:'14',dayNum:17,title:'Charyn Canyon Day Trip 👥',sub:'+ Kolsai & Kaindy Lakes',friend:true},
+    {id:'d615',mo:'JUN',dt:'15',dayNum:18,title:'Big Almaty Lake 👥',sub:'Alpine reservoir hike',friend:true},
+    {id:'d616',mo:'JUN',dt:'16',dayNum:19,title:'Kok Zhailau Hike 👥',sub:'Alpine meadow trekking',friend:true},
+    {id:'d617',mo:'JUN',dt:'17',dayNum:20,title:'Arasan Baths & Green Bazaar 👥',sub:'Rest day · Friend\'s last day',friend:true},
+  ]},
+  {id:'c-kg', flag:'🇰🇬', name:'Kyrgyzstan', dates:'Jun 18–25', open:false, days:[
+    {id:'d618',mo:'JUN',dt:'18',dayNum:21,title:'Almaty ✈ Bishkek',sub:'City centre & Osh Bazaar'},
+    {id:'d619',mo:'JUN',dt:'19',dayNum:22,title:'Ala Archa National Park',sub:'Gorge hiking, 1hr from Bishkek'},
+    {id:'d620',mo:'JUN',dt:'20–22',dayNum:23,title:'Song Kul Lake — Yurt Stay',sub:'3 days · Horse riding & nomadic life'},
+    {id:'d623',mo:'JUN',dt:'23–24',dayNum:26,title:'Return to Bishkek',sub:'City museums & final days'},
+    {id:'d625',mo:'JUN',dt:'25',dayNum:28,title:'Bishkek ✈ Almaty',sub:'Last night in Kazakhstan'},
+  ]},
+  {id:'c-home', flag:'✈️', name:'Homebound', dates:'Jun 26', open:false, days:[
+    {id:'d626',mo:'JUN',dt:'26',dayNum:29,title:'Almaty → Bangkok → Singapore',sub:'Long journey home 🏠'},
+  ]},
+];
+
+// ═══════════════════════════════════════
+// SHARED STORAGE
+// ═══════════════════════════════════════
+var ROOM_ID = '';
+var ROOM_LOCAL = 'ca_room_v5';
+
+function getRoomId() {
+  var h = location.hash.replace('#','').trim();
+  if (h && /^[a-z0-9]{10,}$/i.test(h)) return h;
+  try {
+    var r = localStorage.getItem(ROOM_LOCAL);
+    if (!r) {
+      r = [1,2,3].map(function(){ return Math.random().toString(36).slice(2,6); }).join('');
+      localStorage.setItem(ROOM_LOCAL, r);
+    }
+    return r;
+  } catch(e) { return 'trip' + Date.now().toString(36); }
+}
+
+function sKey(day) { return 'ca5:' + ROOM_ID + ':' + day; }
+
+function sanitizeLink(link) {
+  // Repair any HTML-encoded URLs from older saved data
+  return (link||'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+}
+
+function sanitizeItems(items) {
+  if (!Array.isArray(items)) return items;
+  return items.map(function(it) {
+    return Object.assign({}, it, {link: sanitizeLink(it.link)});
+  });
+}
+
+async function loadDay(day) {
+  try {
+    var r = await window.storage.get(sKey(day), true);
+    return r ? sanitizeItems(JSON.parse(r.value)) : null;
+  } catch(e) { return null; }
+}
+
+async function saveDay(day, items) {
+  try {
+    await window.storage.set(sKey(day), JSON.stringify(items), true);
+    flashSync();
+  } catch(e) {}
+}
+
+function flashSync() {
+  var b = document.getElementById('syncBadge');
+  b.classList.add('show');
+  clearTimeout(b._t);
+  b._t = setTimeout(function(){ b.classList.remove('show'); }, 2000);
+}
+
+var STATE = {};
+
+// ═══════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Safe URL: only escapes chars that break JS string literals inside onclick=""
+function safeUrl(url) {
+  return (url||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+}
+
+function typeInfo(t) {
+  for (var i=0; i<TYPES.length; i++) { if (TYPES[i].id===t) return TYPES[i]; }
+  return TYPES[3];
+}
+
+function renderItem(item, day) {
+  var ti = typeInfo(item.type);
+  var rawLink = sanitizeLink(item.link || '');
+  var hasLink = rawLink.length > 0;
+
+  var badgeHtml = '';
+  if (item.type === 'hotel') {
+    // Hotels always get a Maps badge
+    var hotelUrl = hasLink ? rawLink : ('https://maps.google.com/?q=' + encodeURIComponent(item.name));
+    badgeHtml = '<button class="link-badge lb-hotel" onclick="openLink(\'' + safeUrl(hotelUrl) + '\')">🗺 Google Maps</button>';
+  } else if (item.type === 'flight' && hasLink) {
+    badgeHtml = '<button class="link-badge lb-flight" onclick="openLink(\'' + safeUrl(rawLink) + '\')">✈ Flight Status ↗</button>';
+  } else if (item.type === 'train' && hasLink) {
+    badgeHtml = '<button class="link-badge lb-train" onclick="openLink(\'' + safeUrl(rawLink) + '\')">🚂 UZ Railway ↗</button>';
+  } else if (hasLink) {
+    badgeHtml = '<button class="link-badge lb-map" onclick="openLink(\'' + safeUrl(rawLink) + '\')">📍 Google Maps</button>';
+  }
+
+  return '<div class="item type-' + esc(item.type) + '" data-id="' + esc(item.id) + '">' +
+    '<div class="item-left">' +
+      '<span class="item-icon">' + ti.icon + '</span>' +
+      '<div class="item-body">' +
+        '<div class="item-name">' + esc(item.name) + '</div>' +
+        (item.sub  ? '<div class="item-sub">' + esc(item.sub) + '</div>' : '') +
+        (item.pnr  ? '<div class="item-pnr">' + esc(item.pnr) + '</div>' : '') +
+        (item.note ? '<div class="item-sub" style="white-space:pre-wrap;margin-top:4px">' + esc(item.note) + '</div>' : '') +
+        badgeHtml +
+      '</div>' +
+    '</div>' +
+    '<div class="item-actions">' +
+      '<button class="item-btn edit-btn" onclick="openEdit(\'' + esc(day) + '\',\'' + esc(item.id) + '\')">✎</button>' +
+      '<button class="item-btn del-btn"  onclick="delItem(\'' + esc(day) + '\',\'' + esc(item.id) + '\')">×</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderDay(day) {
+  var c = document.getElementById('items-' + day);
+  if (!c) return;
+  var items = STATE[day] || [];
+  if (items.length === 0) {
+    c.innerHTML = '<div class="empty-state">No items — tap ＋ to add</div>';
+  } else {
+    c.innerHTML = items.map(function(it){ return renderItem(it, day); }).join('');
+  }
+}
+
+function buildHTML() {
+  var app = document.getElementById('app');
+  var html = '';
+  COUNTRIES.forEach(function(country) {
+    html += '<div class="country' + (country.open ? ' open' : '') + '" id="' + country.id + '" style="margin-top:16px">' +
+      '<button class="country-toggle" onclick="toggleCountry(\'' + country.id + '\')">' +
+        '<span class="c-flag">' + country.flag + '</span>' +
+        '<div class="c-info"><div class="c-name">' + country.name + '</div><div class="c-dates">' + country.dates + '</div></div>' +
+        '<span class="c-chevron">›</span>' +
+      '</button>' +
+      '<div class="country-body">';
+
+    country.days.forEach(function(day) {
+      if (day.id === 'd610') {
+        html += '<div class="friend-banner"><span class="fb-icon">👥</span><div class="fb-text"><strong>Friend joins from Jun 10</strong> — travelling together Samarkand → Tashkent → Almaty until Jun 17.</div></div>';
+      }
+      html += '<div class="day-card' + (day.friend ? ' friend-day' : '') + '" id="' + day.id + '">' +
+        '<div class="day-header" onclick="toggleDay(this)">' +
+          '<div class="day-badge">' +
+            '<span class="badge-daylabel">DAY</span>' +
+            '<span class="badge-daynum">' + day.dayNum + '</span>' +
+            '<span class="badge-date">' + day.mo + ' ' + day.dt + '</span>' +
+          '</div>' +
+          '<div class="day-info">' +
+            '<div class="day-title">' + day.title + '</div>' +
+            '<div class="day-sub">' + day.sub + '</div>' +
+          '</div>' +
+          '<span class="d-chevron">›</span>' +
+        '</div>' +
+        '<div class="day-body">' +
+          (day.friend && day.id !== 'd610' ? '<div class="friend-tag">👥 With friend</div>' : '') +
+          '<div class="item-list" id="items-' + day.id + '"></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="add-row"><button class="add-btn" onclick="openAdd(\'' + day.id + '\')">＋ Add Item</button></div>';
+    });
+
+    html += '<div style="height:12px"></div></div></div>';
+  });
+  app.innerHTML = html;
+}
+
+// ═══════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════
+var mDay = null, mEditId = null, mType = 'activity';
+
+function openAdd(day) {
+  mDay = day; mEditId = null; mType = 'activity';
+  document.getElementById('m-title').textContent = 'Add Item';
+  document.getElementById('delEntryBtn').style.display = 'none';
+  clearForm(); buildTypeGrid();
+  document.getElementById('modal').classList.add('show');
+  setTimeout(function(){ document.getElementById('fName').focus(); }, 320);
+}
+
+function openEdit(day, id) {
+  var item = (STATE[day]||[]).filter(function(x){ return x.id===id; })[0];
+  if (!item) return;
+  mDay = day; mEditId = id; mType = item.type;
+  document.getElementById('m-title').textContent = 'Edit Item';
+  document.getElementById('delEntryBtn').style.display = 'block';
+  buildTypeGrid();
+  document.getElementById('fName').value = item.name || '';
+  document.getElementById('fSub').value = item.sub || '';
+  document.getElementById('fPnr').value = (item.pnr||'').replace(/^PNR:\s*/,'').replace(/^Booking:\s*/,'');
+  document.getElementById('fNote').value = item.note || '';
+  document.getElementById('fLink').value = sanitizeLink(item.link || '');
+  document.getElementById('modal').classList.add('show');
+  setTimeout(function(){ document.getElementById('fName').focus(); }, 320);
+}
+
+function clearForm() {
+  ['fName','fSub','fPnr','fNote','fLink'].forEach(function(id){ document.getElementById(id).value = ''; });
+}
+
+function buildTypeGrid() {
+  var grid = document.getElementById('typeGrid');
+  grid.innerHTML = TYPES.map(function(t) {
+    return '<button class="type-tile' + (mType===t.id?' active':'') + '" onclick="selectType(\'' + t.id + '\')">' +
+      '<span class="tt-icon">' + t.icon + '</span>' + t.label + '</button>';
+  }).join('');
+  updateTypeUI();
+}
+
+function selectType(t) {
+  mType = t;
+  document.querySelectorAll('.type-tile').forEach(function(b){ b.classList.remove('active'); });
+  var tiles = document.querySelectorAll('.type-tile');
+  for (var i=0; i<tiles.length; i++) {
+    if (tiles[i].textContent.trim().startsWith(TYPES.filter(function(x){return x.id===t;})[0].label)) {
+      tiles[i].classList.add('active'); break;
+    }
+  }
+  updateTypeUI();
+}
+
+function updateTypeUI() {
+  var ti = typeInfo(mType);
+  document.getElementById('m-icon').textContent = ti.icon;
+  document.getElementById('subLabel').textContent = ti.subLabel || 'Details';
+  document.getElementById('pnrGroup').style.display = ti.showPnr ? 'block' : 'none';
+  document.getElementById('subGroup').style.display = ti.subLabel ? 'block' : 'none';
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('show'); mEditId = null; }
+function closeBg(e) { if (e.target.id === 'modal') closeModal(); }
+
+async function saveItem() {
+  var name = document.getElementById('fName').value.trim();
+  if (!name) { document.getElementById('fName').focus(); return; }
+  var sub  = document.getElementById('fSub').value.trim();
+  var rawPnr = document.getElementById('fPnr').value.trim();
+  var note = document.getElementById('fNote').value.trim();
+  var link = document.getElementById('fLink').value.trim();
+  var ti   = typeInfo(mType);
+  var pnr  = rawPnr ? (mType==='train' ? 'Booking: ' : 'PNR: ') + rawPnr : '';
+  if (!STATE[mDay]) STATE[mDay] = [];
+  if (mEditId) {
+    STATE[mDay] = STATE[mDay].map(function(it) {
+      return it.id===mEditId ? Object.assign({},it,{type:mType,name:name,sub:sub,pnr:pnr,note:note,link:link}) : it;
+    });
+  } else {
+    STATE[mDay].push({id:mkId(),type:mType,name:name,sub:sub,pnr:pnr,note:note,link:link});
+  }
+  renderDay(mDay);
+  await saveDay(mDay, STATE[mDay]);
+  closeModal();
+}
+
+async function deleteCurrentItem() { if (!mEditId||!mDay) return; await delItem(mDay,mEditId); closeModal(); }
+
+async function delItem(day, id) {
+  if (!STATE[day]) return;
+  STATE[day] = STATE[day].filter(function(x){ return x.id!==id; });
+  renderDay(day);
+  await saveDay(day, STATE[day]);
+}
+
+// ═══════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════
+function toggleCountry(id) { document.getElementById(id).classList.toggle('open'); }
+function toggleDay(h) { h.closest('.day-card').classList.toggle('open'); }
+
+function jumpTo(id, navId) {
+  if (!id) return;
+  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active-nav'); });
+  if (navId) { var nb = document.getElementById(navId); if (nb) nb.classList.add('active-nav'); }
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (!el.classList.contains('open')) el.classList.add('open');
+  setTimeout(function(){ el.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+}
+
+// ═══════════════════════════════════════
+// SHARE
+// ═══════════════════════════════════════
+async function copyShareLink() {
+  var url = location.href.split('#')[0] + '#' + ROOM_ID;
+  try { await navigator.clipboard.writeText(url); }
+  catch(e) {
+    var ta = document.createElement('textarea');
+    ta.value = url; ta.style.opacity = '0'; ta.style.position = 'fixed';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+  }
+  showToast('🔗 Link copied — anyone with it can view & edit');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+function dismissBanner() {
+  document.getElementById('installBanner').style.display = 'none';
+  try { localStorage.setItem('ca_banner_dismissed','1'); } catch(e) {}
+}
+
+var ALL_DAYS = Object.keys(BASE_DATA);
+
+async function init() {
+  ROOM_ID = getRoomId();
+  if (!location.hash || location.hash === '#') {
+    history.replaceState(null, '', location.href.split('#')[0] + '#' + ROOM_ID);
+  }
+
+  buildHTML();
+
+  await Promise.all(ALL_DAYS.map(async function(day) {
+    var saved = await loadDay(day);
+    STATE[day] = saved !== null ? saved : JSON.parse(JSON.stringify(BASE_DATA[day]||[]));
+    renderDay(day);
+  }));
+
+  var isStandalone = window.navigator.standalone===true || window.matchMedia('(display-mode:standalone)').matches;
+  var banner = document.getElementById('installBanner');
+  if (isStandalone) {
+    banner.style.display = 'none';
+  } else {
+    try { if (localStorage.getItem('ca_banner_dismissed')) banner.style.display = 'none'; } catch(e) {}
+    var ua = navigator.userAgent;
+    if (/Android/i.test(ua)) {
+      document.getElementById('installText').innerHTML = '<strong>Install as App</strong> — tap ⋮ then "Add to Home screen"';
+    } else if (!/iPhone|iPad|iPod/i.test(ua)) {
+      banner.style.display = 'none';
+    }
+  }
+}
+
+window.addEventListener('resize', function() {
+  var m = document.querySelector('.modal-overlay.show .modal');
+  if (m) setTimeout(function(){ m.scrollIntoView({block:'end',behavior:'smooth'}); }, 150);
+});
+
+init();
+</script>
+</body>
+</html>
