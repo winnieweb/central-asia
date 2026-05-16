@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Central Asia">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230A0A0A'/%3E%3Ctext y='130' x='15' font-size='130' font-family='system-ui'%3E🌍%3C/text%3E%3C/svg%3E">
-<title>Central Asia 2025</title>
+<title>Central Asia 2026</title>
 <style>
 :root {
   --bg:#0A0A0A; --bg2:#141414; --bg3:#1C1C1E; --bg4:#2C2C2E;
@@ -161,9 +161,8 @@ body{background:var(--bg);color:var(--text1);font-family:-apple-system,'SF Pro T
 .item-btn.del-btn:active{color:var(--red);background:var(--red2);}
 
 /* ADD BUTTON */
-.add-row{margin:6px 10px 0;}
-.add-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:var(--rs);border:1px dashed rgba(255,255,255,.14);background:none;color:var(--text3);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;min-height:42px;transition:all .15s;}
-.add-btn:active{background:rgba(255,255,255,.06);color:var(--text2);}
+.add-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:var(--rs);border:1px dashed rgba(255,255,255,.10);background:none;color:var(--text4);font-size:11px;font-weight:600;font-family:inherit;cursor:pointer;min-height:38px;transition:all .15s;margin-top:6px;}
+.add-btn:active{background:rgba(255,255,255,.06);color:var(--text2);border-color:rgba(255,255,255,.25);}
 
 /* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--sep);display:flex;align-items:stretch;padding-bottom:var(--safe-bot);z-index:100;height:calc(var(--nav-h) + var(--safe-bot));}
@@ -218,7 +217,7 @@ body{background:var(--bg);color:var(--text1);font-family:-apple-system,'SF Pro T
 
 <div class="wrap">
   <div class="hero">
-    <div class="hero-eyebrow">29 May – 26 Jun 2025 · 29 Days</div>
+    <div class="hero-eyebrow">29 May – 26 Jun 2026 · 29 Days</div>
     <h1>Central Asia</h1>
     <div class="hero-sub">Uzbekistan · Kazakhstan · Kyrgyzstan</div>
     <div class="hero-chips">
@@ -310,147 +309,185 @@ function nt(text) {
 // BASE DATA
 // ═══════════════════════════════════════
 var BASE_DATA = {
+  // ── MAY 29 · Day 1 ── Depart Singapore
   d529:[
     fl('SIN → DEL  ·  AI 2383','23:00 → 02:30 (+1)','JFPZZZ | XUBE5E','https://www.google.com/search?q=Air+India+AI+2383+flight+status'),
     fl('DEL → TAS  ·  AI 7109','13:45 → 16:15','JFPZZZ | XUBE5E','https://www.google.com/search?q=Air+India+AI+7109+flight+status'),
     nt('🌙 Long travel day — get SIM card & cash at Tashkent airport before the domestic terminal'),
   ],
+  // ── MAY 30 · Day 2 ── Tashkent → Khiva
   d530:[
     ht('Said-Maxsum','May 30 – Jun 2 · 3 nights · Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
     fl('TAS → UGC  ·  HY 57','20:40 → 22:10','YCDSAA','https://www.google.com/search?q=Uzbekistan+Airways+HY+57+flight+status'),
     nt('🚕 ~30 min taxi from Urgench airport to Khiva — negotiate price ~30,000–50,000 UZS'),
   ],
+  // ── MAY 31 · Day 3 ── Khiva Day 1
   d531:[
     ht('Said-Maxsum','Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
     ac('Ichan Kala (Full Day)','Buy combo ticket at entrance — covers most monuments','https://maps.google.com/?q=Ichan+Kala+Khiva'),
     ac('Kalta Minor Minaret','','https://maps.google.com/?q=Kalta+Minor+Minaret+Khiva'),
     ac('Walk the City Walls','Best at sunset for panoramic views','https://maps.google.com/?q=City+Walls+Ichan+Kala+Khiva'),
   ],
+  // ── JUN 1 · Day 4 ── Khiva Day 2
   d601:[
     ht('Said-Maxsum','Khiva','https://maps.google.com/?q=Said+Maxsum+Hotel+Khiva'),
     ac('Islam Khodja Minaret','Tallest in Khiva — climb for panoramic views','https://maps.google.com/?q=Islam+Khodja+Minaret+Khiva'),
     ac('Pahlavan Mahmud Mausoleum','Stunning tilework inside','https://maps.google.com/?q=Pahlavan+Mahmud+Mausoleum+Khiva'),
-    ac('Craft workshops & bazaars in Ichan Kala',''),
   ],
+  // ── JUN 2 · Day 5 ── Khiva → Bukhara
   d602:[
     ht('Shaxruza Shahzoda Guest House','Jun 2–5 · 3 nights · Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
     tr('Khiva → Bukhara','15:14 → 21:22  ·  ~6 hours','Train 126 | 73815427926254'),
     nt('🍑 Morning explore Khiva before afternoon train — pick up dried fruits for the journey'),
   ],
+  // ── JUN 3 · Day 6 ── Bukhara Day 1
   d603:[
     ht('Shaxruza Shahzoda Guest House','Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
-    ac('Po-i-Kalyan Complex','Kalon Minaret, mosque & madrasah facing each other','https://maps.google.com/?q=Po-i-Kalyan+Bukhara'),
+    ac('Po-i-Kalyan','Kalon Minaret, mosque & madrasah facing each other','https://maps.google.com/?q=Po-i-Kalyan+Bukhara'),
     ac('Bolo Hauz Mosque','Carved wooden columns reflected in the pool','https://maps.google.com/?q=Bolo+Hauz+Mosque+Bukhara'),
     ac('Toqi Telpak Furushon Bazaar','Domed 16th-c trading house — best for souvenirs','https://maps.google.com/?q=Toqi+Telpak+Furushon+Bukhara'),
+    ac('Chor Minor','Quirky 4-minaret gatehouse in the back streets','https://maps.google.com/?q=Chor+Minor+Bukhara'),
   ],
+  // ── JUN 4 · Day 7 ── Bukhara Day 2
   d604:[
     ht('Shaxruza Shahzoda Guest House','Bukhara','https://maps.google.com/?q=Shaxruza+Shahzoda+Guest+House+Bukhara'),
     ac('Lyabi-Khauz Square','Heart of old Bukhara — dine by the ancient pool at night','https://maps.google.com/?q=Lyabi-Khauz+Bukhara'),
     ac('Abdulaziz Han Madrassah','Intricate muqarnas and tilework inside','https://maps.google.com/?q=Abdulaziz+Khan+Madrassah+Bukhara'),
     ac('Bozori Kord Bathhouse','Original working bathhouse — scrub & relax','https://maps.google.com/?q=Bozori+Kord+Bathhouse+Bukhara'),
-    ac('Chor Minor','Quirky 4-minaret gatehouse in the back streets','https://maps.google.com/?q=Chor+Minor+Bukhara'),
   ],
+  // ── JUN 5 · Day 8 ── Bukhara → Samarkand
   d605:[
     ht('MUSAVVIR','Jun 5–9 · 4 nights · Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
     tr('Bukhara → Samarkand','16:51 → 19:13','Train 709 (Sharq) | 73915428146393'),
   ],
+  // ── JUN 6 · Day 9 ── Day Trip Tajikistan
   d606:[
     ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
     ac('Day trip to Tajikistan 🇹🇯','Oybek border crossing — most common route from Samarkand'),
     ac('Tajikistan e-Visa required','Apply before this day at evisa.tj','https://www.evisa.tj/index.evisa.html'),
   ],
+  // ── JUN 7 · Day 10 ── Samarkand Day 1
   d607:[
     ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
+    ac('The Eternal City walk','Explore the old city streets and surroundings','https://maps.google.com/?q=Samarkand+old+city'),
+    ac('Shah-i-Zinda Necropolis','Avenue of tilework mausoleums, deeply spiritual','https://maps.google.com/?q=Shah-i-Zinda+Samarkand'),
     ac('The Registan','Opens 8am — arrive early. Three madrasahs in breathtaking symmetry','https://maps.google.com/?q=The+Registan+Samarkand'),
     ac('Gur-E-Amir Mausoleum','Tomb of Tamerlane — stunning blue dome','https://maps.google.com/?q=Gur-e-Amir+Mausoleum+Samarkand'),
-    ac('Shah-i-Zinda Necropolis','Avenue of tilework mausoleums, deeply spiritual','https://maps.google.com/?q=Shah-i-Zinda+Samarkand'),
   ],
+  // ── JUN 8 · Day 11 ── Samarkand Day 2
   d608:[
     ht('MUSAVVIR','Samarkand','https://maps.google.com/?q=Musavvir+Hotel+Samarkand'),
     ac('Siab Bazaar','Famous for non bread & fresh produce','https://maps.google.com/?q=Siab+Bazaar+Samarkand'),
     ac('University Boulevard','Near Ulugbek Observatory','https://maps.google.com/?q=Ulugbek+Observatory+Samarkand'),
     ac('Mirror Mosque (Hazrat Hizr)','Elevated mosque with panoramic city views','https://maps.google.com/?q=Hazrat+Hizr+Mosque+Samarkand'),
   ],
+  // ── JUN 9 · Day 12 ── Day Trip Shakhrisabz
   d609:[
     ht('Medina Hotel Samarkand','Jun 9–10 · 1 night','https://maps.google.com/?q=Medina+Hotel+Samarkand'),
     ac('Ak-Saray Palace — Shakhrisabz','~80km south · Tamerlane\'s White Palace ruins','https://maps.google.com/?q=Ak-Saray+Palace+Shakhrisabz'),
-    ac('Kok-Gumbaz Mosque','Blue-domed mosque in the same complex','https://maps.google.com/?q=Kok-Gumbaz+Mosque+Shakhrisabz'),
+    ac('Kok-Gumbaz Mosque','Blue-domed mosque in the same Shakhrisabz complex','https://maps.google.com/?q=Kok-Gumbaz+Mosque+Shakhrisabz'),
   ],
+  // ── JUN 10 · Day 13 ── Samarkand → Tashkent (night train)
   d610:[
-    ht('Medina Hotel Samarkand','Check-out day','https://maps.google.com/?q=Medina+Hotel+Samarkand'),
-    ac('The Registan','8am — golden morning light. Friend joins!','https://maps.google.com/?q=The+Registan+Samarkand'),
+    ht('Apart Hotel Istaravshan','Jun 10–12 · 2 nights · Tashkent (check in on arrival)','https://maps.google.com/?q=Apart+Hotel+Istaravshan+Tashkent'),
+    ac('The Registan','8am — golden morning light before the train','https://maps.google.com/?q=The+Registan+Samarkand'),
     ac('Gur-E-Amir Mausoleum','','https://maps.google.com/?q=Gur-e-Amir+Mausoleum+Samarkand'),
     ac('Shah-i-Zinda Necropolis','','https://maps.google.com/?q=Shah-i-Zinda+Samarkand'),
     ac('Siab Bazaar','Pick up snacks for the night train','https://maps.google.com/?q=Siab+Bazaar+Samarkand'),
     tr('Samarkand → Tashkent','19:23 → 23:06','Train 709 (Sharq) | 74015428149053'),
   ],
+  // ── JUN 11 · Day 14 ── Tashkent Day 1
   d611:[
-    ht('Tashkent Hotel','Jun 11–12 · Tashkent','https://maps.google.com/?q=Tashkent+hotel'),
-    ac('Tashkent Metro Stations','Soviet-era masterpieces — each station uniquely decorated','https://maps.google.com/?q=Tashkent+Metro'),
-    ac('Chorsu Bazaar','Blue-domed market — spices, bread, atmosphere','https://maps.google.com/?q=Chorsu+Bazaar+Tashkent'),
-    ac('Kukeldash Madrasah & Hoja Ahror Valiy Mosque','','https://maps.google.com/?q=Kukeldash+Madrasah+Tashkent'),
-    ac('Central Asian Plov Center','Best plov in Central Asia — go for lunch when freshest','https://maps.google.com/?q=Central+Asian+Plov+Center+Tashkent'),
-  ],
-  d612:[
-    ht('Tashkent Hotel','Depart to Almaty tomorrow','https://maps.google.com/?q=Tashkent+hotel'),
+    ht('Apart Hotel Istaravshan','Tashkent','https://maps.google.com/?q=Apart+Hotel+Istaravshan+Tashkent'),
     ac('State Art Museum of Uzbekistan','','https://maps.google.com/?q=State+Art+Museum+Uzbekistan+Tashkent'),
-    ac('Uzbekistan Hotel','Soviet modernist landmark','https://maps.google.com/?q=Uzbekistan+Hotel+Tashkent'),
+    ac('Chorsu Bazaar','Blue-domed market — spices, bread, atmosphere','https://maps.google.com/?q=Chorsu+Bazaar+Tashkent'),
+    ac('Hoja Ahror Valiy Mosque & Kukeldash Madrasah','','https://maps.google.com/?q=Kukeldash+Madrasah+Tashkent'),
+    ac('Tashkent Metro Stations','Soviet-era masterpieces — each station uniquely decorated','https://maps.google.com/?q=Tashkent+Metro'),
     ac('Museum of Victims of Political Repression','','https://maps.google.com/?q=Museum+Victims+Political+Repression+Tashkent'),
-    ac('Alisher Navoi Opera & Ballet Theatre','Book tickets in advance','https://maps.google.com/?q=Alisher+Navoi+Opera+Ballet+Tashkent'),
   ],
+  // ── JUN 12 · Day 15 ── Tashkent Day 2
+  d612:[
+    ht('Apart Hotel Istaravshan','Depart to Almaty tomorrow','https://maps.google.com/?q=Apart+Hotel+Istaravshan+Tashkent'),
+    ac('Uzbekistan Hotel','Soviet modernist landmark','https://maps.google.com/?q=Uzbekistan+Hotel+Tashkent'),
+    ac('Central Asian Plov Center','Best plov in Central Asia — go for lunch when freshest','https://maps.google.com/?q=Central+Asian+Plov+Center+Tashkent'),
+    ac('Alisher Navoi Opera & Ballet Theatre','Watch a ballet performance — book tickets in advance!','https://maps.google.com/?q=Alisher+Navoi+Opera+Ballet+Tashkent'),
+  ],
+  // ── JUN 13 · Day 16 ── Tashkent → Almaty + Almaty City
   d613:[
-    ht('Almaty Hotel','Jun 13–17 · Almaty','https://maps.google.com/?q=Almaty+hotel'),
-    fl('TAS → ALA  ·  HY 761','Morning — check booking','DCO7DR','https://www.google.com/search?q=Uzbekistan+Airways+HY+761+flight+status'),
+    ht('The First Apart Hotel','Jun 13–17 · 4 nights · Almaty','https://maps.google.com/?q=The+First+Apart+Hotel+Almaty'),
+    fl('TAS → ALA  ·  HY 761','08:15 → 09:45','DCO7DR','https://www.google.com/search?q=Uzbekistan+Airways+HY+761+flight+status'),
+    ac('City Center stroll','Explore Almaty\'s main streets','https://maps.google.com/?q=Almaty+city+center'),
     ac('Panfilov Park & Zenkov Cathedral','One of the world\'s largest wooden structures — no nails','https://maps.google.com/?q=Panfilov+Park+Almaty'),
+    ac('Arasan Baths (Arasan Wellness Center)','Historic Soviet-era public baths — steam rooms & massage','https://maps.google.com/?q=Arasan+Baths+Almaty'),
+    ac('Green Bazaar (Zelyony)','Vibrant covered market — try kumiss','https://maps.google.com/?q=Green+Bazaar+Almaty'),
     ac('Kok Tobe Hill','Cable car for city panoramas & Beatles statue','https://maps.google.com/?q=Kok+Tobe+Hill+Almaty'),
   ],
+  // ── JUN 14 · Day 17 ── Kok Zhailau Hike
   d614:[
-    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
+    ht('The First Apart Hotel','Almaty','https://maps.google.com/?q=The+First+Apart+Hotel+Almaty'),
+    ac('Kok Zhailau Hike / Кок-Жайляу','3h up · 2h down. Take bus No.12 to "Akbulak (Rodnik / Prosveshchenets)" stop, then first road to the left','https://www.komoot.com/smarttour/24830894'),
+    nt('🥾 Start early. Wear layers — alpine conditions. Route on Komoot: komoot.com/smarttour/24830894'),
+  ],
+  // ── JUN 15 · Day 18 ── Charyn Canyon day trip
+  d615:[
+    ht('The First Apart Hotel','Almaty','https://maps.google.com/?q=The+First+Apart+Hotel+Almaty'),
     ac('Charyn & Black Canyon','Kazakhstan\'s Grand Canyon — 200m deep red rock formations','https://maps.google.com/?q=Charyn+Canyon+Kazakhstan'),
     ac('Kolsai Lakes & Kaindy Lake','Submerged forest — turquoise water with emerging tree trunks','https://maps.google.com/?q=Kaindy+Lake+Kazakhstan'),
+    ac('GetYourGuide Day Tour','Book via GetYourGuide','https://www.getyourguide.com/almaty-city-l1414/almaty-charyn-canyon-kolsay-and-kaindy-lakes-day-trip-t565634/'),
     nt('⏰ Very long day 12–14h. Start early, bring warm layers.'),
   ],
-  d615:[
-    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
+  // ── JUN 16 · Day 19 ── Big Almaty Lake
+  d616:[
+    ht('The First Apart Hotel','Almaty','https://maps.google.com/?q=The+First+Apart+Hotel+Almaty'),
     ac('Big Almaty Lake','Turquoise glacier lake at 2,500m — permit ~1,000 KZT','https://maps.google.com/?q=Big+Almaty+Lake+Kazakhstan'),
   ],
-  d616:[
-    ht('Almaty Hotel','Almaty','https://maps.google.com/?q=Almaty+hotel'),
-    ac('Kok Zhailau Hike','~12km round trip from Big Almaty Gorge — wide-open alpine meadows','https://maps.google.com/?q=Kok+Zhailau+Almaty'),
-  ],
+  // ── JUN 17 · Day 20 ── Hotel change Almaty
   d617:[
-    ht('Almaty Hotel','Friend\'s last day 👋','https://maps.google.com/?q=Almaty+hotel'),
-    ac('Arasan Baths','Soviet-era public baths — steam rooms & massage','https://maps.google.com/?q=Arasan+Baths+Almaty'),
-    ac('Green Bazaar (Zelyony)','Vibrant covered market — try kumiss','https://maps.google.com/?q=Green+Bazaar+Almaty'),
+    ht('Almaty Grand Erbil Hotel','Jun 17–18 · Check-out to Bishkek tomorrow','https://maps.google.com/?q=Almaty+Grand+Erbil+Hotel'),
+    nt('🏨 Hotel change today — move from The First Apart Hotel to Almaty Grand Erbil Hotel'),
   ],
+  // ── JUN 18 · Day 21 ── Almaty → Bishkek → Kochkor
   d618:[
-    ht('Bishkek Hotel','Jun 18–19 · Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
-    fl('ALA → BSZ  ·  KC 107','12:25 → 14:25','','https://www.google.com/search?q=Air+Astana+KC+107+flight+status'),
-    ac('Ala-Too Square','Main square — changing of the guard ceremony','https://maps.google.com/?q=Ala-Too+Square+Bishkek'),
-    ac('Osh Bazaar','Huge chaotic market — spices, fabrics, street food','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+    fl('ALA → BSZ  ·  KC 107','12:25 → 14:25','999DIP','https://www.google.com/search?q=Air+Astana+KC+107+flight+status'),
+    ac('Bishkek: Ala-Too Square','Main square — changing of the guard ceremony','https://maps.google.com/?q=Ala-Too+Square+Bishkek'),
+    ac('Bishkek: Osh Bazaar','Huge chaotic market — spices, fabrics, street food','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+    nt('🚌 Travel to Kochkor after Bishkek — base for Song Kul. ~3h by shared taxi/marshrutka'),
   ],
+  // ── JUN 19–21 · Day 22–24 ── Song Kul Yurt Stay
   d619:[
-    ht('Bishkek Hotel','Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
-    ac('Ala Archa National Park','Hike to Ak-Sai Glacier ~6–8km · entry ~600 KGS · taxi ~40 min','https://maps.google.com/?q=Ala+Archa+National+Park+Kyrgyzstan'),
-  ],
-  d620:[
-    ht('Yurt Camp at Song Kul','Jun 20–22 · 3 nights · 3,016m altitude','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
-    ac('Horse Riding around the lake','With a local guide','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
-    ac('Stargazing','Zero light pollution — extraordinary night sky',''),
+    ht('Yurt Camp at Song Kul','Jun 19–21 · 3 nights · 3,016m altitude','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
+    ac('Meet-up point: Travel Around Guest House, Kochkor','Meet at 10AM sharp','https://maps.google.com/?q=Travel+Around+Guest+House+Kochkor+Kyrgyzstan'),
+    ac('Horse Riding around Song Kul','With a local guide — one of the best experiences in Central Asia','https://maps.google.com/?q=Song+Kul+Lake+Kyrgyzstan'),
+    ac('Stargazing at Song Kul','Zero light pollution — extraordinary night sky',''),
     ac('Nomadic Meals at the Yurt','Beshbarmak, kumiss, fresh bread over wood fire',''),
-    nt('🧥 Bring warm layers — near 0°C at night. Roads are rough; 4WD recommended'),
+    nt('🧥 Bring very warm layers — near 0°C at night. Roads are rough; 4WD recommended. Night of Jun 21 in Kochkor'),
   ],
+  // ── JUN 22 · Day 25 ── Kol Ukok Lake
+  d622:[
+    ht('Yurt at Kol Ukok','1 night · Kol Ukok','https://maps.google.com/?q=Kol+Ukok+Lake+Kyrgyzstan'),
+    ac('Kol Ukok Lake (Morning)','Beautiful alpine lake — morning visit','https://maps.google.com/?q=Kol+Ukok+Lake+Kyrgyzstan'),
+    nt('🏕️ Yurt stay at Kol Ukok. Head back to Bishkek next afternoon'),
+  ],
+  // ── JUN 23 · Day 26 ── Head back to Bishkek
   d623:[
-    ht('Bishkek Hotel','Jun 23–24 · Bishkek','https://maps.google.com/?q=Bishkek+hotel'),
-    ac('State Historical Museum','','https://maps.google.com/?q=State+Historical+Museum+Bishkek'),
-    ac('Erkindik Boulevard restaurants','Local cafes along the boulevard','https://maps.google.com/?q=Erkindik+Boulevard+Bishkek'),
-    ac('Last souvenirs — Osh Bazaar','','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+    ht('Bishkek Hotel','Jun 23–24 · Bishkek — hotel TBC','https://maps.google.com/?q=Bishkek'),
+    nt('🚌 Head back to Bishkek in the afternoon from Kol Ukok'),
   ],
+  // ── JUN 24 · Day 27 ── Ala Archa National Park
+  d624:[
+    ht('Bishkek Hotel','Bishkek — hotel TBC','https://maps.google.com/?q=Bishkek'),
+    ac('Ala Archa National Park','~1h drive from Bishkek · Stunning Tian Shan gorge hiking','https://maps.google.com/?q=Ala+Archa+National+Park+Kyrgyzstan'),
+    ac('Viator Golden Route Tour (optional)','Burana Tower, Canyons & Issyk-Kul day tour','https://www.viator.com/tours/Bishkek/Golden-Route-Tour-of-Kyrgyzstan-Burana-Canyons-and-Issyk-Kul/d50202-414785P2'),
+  ],
+  // ── JUN 25 · Day 28 ── Bishkek City + Fly back to Almaty
   d625:[
-    ht('Almaty Hotel','Jun 25 · Last night','https://maps.google.com/?q=Almaty+hotel'),
-    fl('BSZ → ALA  ·  KC 108','16:10 → 16:05 (time zone)','','https://www.google.com/search?q=Air+Astana+KC+108+flight+status'),
-    nt('🛌 Rest up before the long journey home tomorrow'),
+    ht('Almaty Hotel','Jun 25 · Last night · Hotel pending','https://maps.google.com/?q=Almaty+hotel'),
+    ac('Bishkek: Ala-Too Square','Final stroll around the main square','https://maps.google.com/?q=Ala-Too+Square+Bishkek'),
+    ac('Bishkek: Osh Bazaar','Last chance for souvenirs','https://maps.google.com/?q=Osh+Bazaar+Bishkek'),
+    fl('BSZ → ALA  ·  KC 108','16:10 → 16:05 (time zone)','999DIP','https://www.google.com/search?q=Air+Astana+KC+108+flight+status'),
+    nt('🛌 Last night in Almaty — rest up before the long journey home tomorrow'),
   ],
+  // ── JUN 26 · Day 29 ── Fly home
   d626:[
     fl('ALA → BKK  ·  KC 933','08:15 → 16:55','97QQ67','https://www.google.com/search?q=Air+Astana+KC+933+flight+status'),
     fl('BKK → SIN  ·  TR 621','22:30 → 02:00 (+1)','F5BWXL','https://www.google.com/search?q=Scoot+TR+621+flight+status'),
@@ -465,33 +502,34 @@ var COUNTRIES = [
   {id:'c-uz', flag:'🇺🇿', name:'Uzbekistan', dates:'May 29 – Jun 12', open:true, days:[
     {id:'d529',mo:'MAY',dt:'29',dayNum:1, title:'Depart Singapore',sub:'SIN → DEL → TAS'},
     {id:'d530',mo:'MAY',dt:'30',dayNum:2, title:'Tashkent ✈ Khiva',sub:'Arrive ancient walled city'},
-    {id:'d531',mo:'MAY',dt:'31',dayNum:3, title:'Khiva — Ichan Kala Day 1',sub:'UNESCO walled inner city'},
-    {id:'d601',mo:'JUN',dt:'1', dayNum:4, title:'Khiva — Ichan Kala Day 2',sub:'Mausoleums & minarets'},
+    {id:'d531',mo:'MAY',dt:'31',dayNum:3, title:'Khiva — Ichan Kala Day 1',sub:'Kalta Minor · City Walls'},
+    {id:'d601',mo:'JUN',dt:'1', dayNum:4, title:'Khiva — Ichan Kala Day 2',sub:'Islam Khodja · Mausoleum'},
     {id:'d602',mo:'JUN',dt:'2', dayNum:5, title:'Khiva → Bukhara',sub:'6-hour scenic train'},
-    {id:'d603',mo:'JUN',dt:'3', dayNum:6, title:'Bukhara — Sacred Quarter',sub:'Po-i-Kalyan & bazaars'},
-    {id:'d604',mo:'JUN',dt:'4', dayNum:7, title:'Bukhara — Lyabi-Khauz',sub:'Bathhouse & night strolls'},
+    {id:'d603',mo:'JUN',dt:'3', dayNum:6, title:'Bukhara — Day 1',sub:'Po-i-Kalyan · Chor Minor'},
+    {id:'d604',mo:'JUN',dt:'4', dayNum:7, title:'Bukhara — Day 2',sub:'Lyabi-Khauz · Bathhouse'},
     {id:'d605',mo:'JUN',dt:'5', dayNum:8, title:'Bukhara → Samarkand',sub:'Sharq high-speed train'},
     {id:'d606',mo:'JUN',dt:'6', dayNum:9, title:'Day Trip — Tajikistan 🇹🇯',sub:'Cross border from Samarkand'},
-    {id:'d607',mo:'JUN',dt:'7', dayNum:10,title:'Samarkand — The Registan',sub:'Eternal city, timeless squares'},
-    {id:'d608',mo:'JUN',dt:'8', dayNum:11,title:'Samarkand — Bazaars & Mosque',sub:'Local life & markets'},
-    {id:'d609',mo:'JUN',dt:'9', dayNum:12,title:'Day Trip — Shakhrisabz',sub:'Ak-Saray Palace & Kok-Gumbaz'},
-    {id:'d610',mo:'JUN',dt:'10',dayNum:13,title:'Samarkand + Night Train 👥',sub:'Friend joins · → Tashkent',friend:true},
-    {id:'d611',mo:'JUN',dt:'11',dayNum:14,title:'Tashkent — Day 1 👥',sub:'Metro, plov & bazaars',friend:true},
-    {id:'d612',mo:'JUN',dt:'12',dayNum:15,title:'Tashkent — Day 2 👥',sub:'Museums, art & ballet',friend:true},
+    {id:'d607',mo:'JUN',dt:'7', dayNum:10,title:'Samarkand — Day 1',sub:'Eternal City · Shah-i-Zinda · Registan'},
+    {id:'d608',mo:'JUN',dt:'8', dayNum:11,title:'Samarkand — Day 2',sub:'Siab Bazaar · Mirror Mosque'},
+    {id:'d609',mo:'JUN',dt:'9', dayNum:12,title:'Day Trip — Shakhrisabz',sub:'Ak-Saray Palace · Kok-Gumbaz'},
+    {id:'d610',mo:'JUN',dt:'10',dayNum:13,title:'Samarkand → Tashkent',sub:'Night train 19:23 → 23:06'},
+    {id:'d611',mo:'JUN',dt:'11',dayNum:14,title:'Tashkent — Day 1',sub:'Metro · Chorsu Bazaar · Museums'},
+    {id:'d612',mo:'JUN',dt:'12',dayNum:15,title:'Tashkent — Day 2',sub:'Plov Center · Opera & Ballet'},
   ]},
   {id:'c-kz', flag:'🇰🇿', name:'Kazakhstan', dates:'Jun 13–17', open:false, days:[
-    {id:'d613',mo:'JUN',dt:'13',dayNum:16,title:'Tashkent ✈ Almaty + City 👥',sub:'Afternoon arrival',friend:true},
-    {id:'d614',mo:'JUN',dt:'14',dayNum:17,title:'Charyn Canyon Day Trip 👥',sub:'+ Kolsai & Kaindy Lakes',friend:true},
-    {id:'d615',mo:'JUN',dt:'15',dayNum:18,title:'Big Almaty Lake 👥',sub:'Alpine reservoir hike',friend:true},
-    {id:'d616',mo:'JUN',dt:'16',dayNum:19,title:'Kok Zhailau Hike 👥',sub:'Alpine meadow trekking',friend:true},
-    {id:'d617',mo:'JUN',dt:'17',dayNum:20,title:'Arasan Baths & Green Bazaar 👥',sub:'Rest day · Friend\'s last day',friend:true},
+    {id:'d613',mo:'JUN',dt:'13',dayNum:16,title:'Tashkent ✈ Almaty + City Tour',sub:'HY761 · Panfilov · Arasan · Kok Tobe'},
+    {id:'d614',mo:'JUN',dt:'14',dayNum:17,title:'Kok Zhailau Hike',sub:'3h up · 2h down · Alpine meadows'},
+    {id:'d615',mo:'JUN',dt:'15',dayNum:18,title:'Charyn Canyon Day Trip',sub:'+ Kolsai & Kaindy Lakes'},
+    {id:'d616',mo:'JUN',dt:'16',dayNum:19,title:'Big Almaty Lake',sub:'Glacier lake at 2,500m'},
+    {id:'d617',mo:'JUN',dt:'17',dayNum:20,title:'Almaty — Hotel Change',sub:'Move to Almaty Grand Erbil'},
   ]},
   {id:'c-kg', flag:'🇰🇬', name:'Kyrgyzstan', dates:'Jun 18–25', open:false, days:[
-    {id:'d618',mo:'JUN',dt:'18',dayNum:21,title:'Almaty ✈ Bishkek',sub:'City centre & Osh Bazaar'},
-    {id:'d619',mo:'JUN',dt:'19',dayNum:22,title:'Ala Archa National Park',sub:'Gorge hiking, 1hr from Bishkek'},
-    {id:'d620',mo:'JUN',dt:'20–22',dayNum:23,title:'Song Kul Lake — Yurt Stay',sub:'3 days · Horse riding & nomadic life'},
-    {id:'d623',mo:'JUN',dt:'23–24',dayNum:26,title:'Return to Bishkek',sub:'City museums & final days'},
-    {id:'d625',mo:'JUN',dt:'25',dayNum:28,title:'Bishkek ✈ Almaty',sub:'Last night in Kazakhstan'},
+    {id:'d618',mo:'JUN',dt:'18',dayNum:21,title:'Almaty ✈ Bishkek → Kochkor',sub:'KC107 · Travel to Kochkor'},
+    {id:'d619',mo:'JUN',dt:'19–21',dayNum:22,title:'Song Kul Yurt Stay',sub:'3 days · Horse riding · Nomadic life'},
+    {id:'d622',mo:'JUN',dt:'22',dayNum:25,title:'Kol Ukok Lake',sub:'Morning visit · Yurt stay'},
+    {id:'d623',mo:'JUN',dt:'23',dayNum:26,title:'Back to Bishkek',sub:'Afternoon return from Kol Ukok'},
+    {id:'d624',mo:'JUN',dt:'24',dayNum:27,title:'Ala Archa National Park',sub:'1h from Bishkek · Tian Shan gorge'},
+    {id:'d625',mo:'JUN',dt:'25',dayNum:28,title:'Bishkek City + Fly to Almaty',sub:'KC108 · Last night in Almaty'},
   ]},
   {id:'c-home', flag:'✈️', name:'Homebound', dates:'Jun 26', open:false, days:[
     {id:'d626',mo:'JUN',dt:'26',dayNum:29,title:'Almaty → Bangkok → Singapore',sub:'Long journey home 🏠'},
@@ -502,7 +540,7 @@ var COUNTRIES = [
 // SHARED STORAGE
 // ═══════════════════════════════════════
 var ROOM_ID = '';
-var ROOM_LOCAL = 'ca_room_v5';
+var ROOM_LOCAL = 'ca_room_v6';
 
 function getRoomId() {
   var h = location.hash.replace('#','').trim();
@@ -650,9 +688,9 @@ function buildHTML() {
         '<div class="day-body">' +
           (day.friend && day.id !== 'd610' ? '<div class="friend-tag">👥 With friend</div>' : '') +
           '<div class="item-list" id="items-' + day.id + '"></div>' +
+          '<button class="add-btn" onclick="openAdd(\'' + day.id + '\')">＋ Add Item</button>' +
         '</div>' +
-      '</div>' +
-      '<div class="add-row"><button class="add-btn" onclick="openAdd(\'' + day.id + '\')">＋ Add Item</button></div>';
+      '</div>';
     });
 
     html += '<div style="height:12px"></div></div></div>';
@@ -801,7 +839,7 @@ function dismissBanner() {
   try { localStorage.setItem('ca_banner_dismissed','1'); } catch(e) {}
 }
 
-var ALL_DAYS = Object.keys(BASE_DATA);
+var ALL_DAYS = ['d529','d530','d531','d601','d602','d603','d604','d605','d606','d607','d608','d609','d610','d611','d612','d613','d614','d615','d616','d617','d618','d619','d622','d623','d624','d625','d626'];
 
 async function init() {
   ROOM_ID = getRoomId();
