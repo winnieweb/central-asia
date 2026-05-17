@@ -188,8 +188,7 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 /* BUDGET TAB */
 #budget-view{padding:16px 12px;}
 /* Category pill tabs */
-.bcat-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;margin-bottom:14px;scrollbar-width:none;}
-.bcat-tabs::-webkit-scrollbar{display:none;}
+.bcat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .bcat-pill{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;font-family:inherit;cursor:pointer;border:1.5px solid transparent;transition:all .18s;-webkit-tap-highlight-color:transparent;}
 .bcat-pill.all{background:linear-gradient(135deg,var(--pink2),var(--lav2));border-color:var(--pink);color:var(--pink);}
 .bcat-pill.cat-transport{background:var(--bcat-transport-bg);border-color:var(--bcat-transport-c);color:var(--bcat-transport-c);}
@@ -326,10 +325,14 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
   <div id="map-view" class="tab-pane">
     <div class="section-heading">Map <span>View</span> 🗺️</div>
     <div class="map-container">
-      <!-- Using OpenStreetMap which works without API keys -->
+      <!-- Google Maps showing the full Central Asia route -->
       <iframe class="map-frame"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=55.0%2C37.0%2C80.0%2C45.5&amp;layer=mapnik&amp;marker=41.2995%2C69.2401"
-        title="Central Asia Map" allowfullscreen loading="lazy">
+        src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d12285762.83826939!2d61.23199569550781!3d42.09388284179688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x38ae8b0cc379e9c3%3A0xa5boday5!2sKhiva%2C+Uzbekistan!3m2!1d41.3775!2d60.3555!4m5!1s0x3f4d19e9b7c7ca55%3A0x1!2sBukhara%2C+Uzbekistan!3m2!1d39.7681!2d64.4556!4m5!1s0x3f4fe35d8a68f32b%3A0x1!2sSamarkand%2C+Uzbekistan!3m2!1d39.6542!2d66.9597!4m5!1s0x38ae8b0cc379e9c3%3A0x1!2sTashkent%2C+Uzbekistan!3m2!1d41.2995!2d69.2401!4m5!1s0x38360eec7c1c3e27%3A0x1!2sAlmaty%2C+Kazakhstan!3m2!1d43.2220!2d76.8512!4m5!1s0x38b6c7a8d7e7f3c1%3A0x1!2sBishkek%2C+Kyrgyzstan!3m2!1d42.8746!2d74.5698!4m5!1s0x38b4b0c4b3d4f321%3A0x1!2sSong+Kul+Lake%2C+Kyrgyzstan!3m2!1d41.8328!2d75.1423!4m5!1s0x38b4a7b0c3d4f321%3A0x1!2sKol+Ukok%2C+Kyrgyzstan!3m2!1d42.1!2d74.8!4m5!1s0x38b3c7a8d7e7f321%3A0x1!2sAla+Archa+National+Park%2C+Kyrgyzstan!3m2!1d42.5831!2d74.4964!5e0!3m2!1sen!2ssg!4v1"
+        title="Central Asia Trip Map"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
       </iframe>
       <div class="map-legend">
         <div class="map-legend-title">Key Destinations</div>
@@ -508,9 +511,17 @@ function tp(text){return{id:mkId(),type:'tip',name:text,sub:'',pnr:'',note:'',li
 // TICKET DRIVE LINKS — paste your Google Drive share URLs here
 // ══════════════════════════════════════════
 var TL={
-  AI2383:'',AI7109:'',HY57:'',
-  TRAIN126:'',TRAIN709A:'',TRAIN709B:'',
-  HY761:'',KC107:'',KC108:'',KC933:'',TR621:''
+  AI2383:  'https://drive.google.com/file/d/1RRTLnBPMQI--tp0xqNvvJZudS0uA2U2R/view?usp=drive_link',  // SIN → DEL
+  AI7109:  'https://drive.google.com/file/d/1XUkNuYUQf8omZpbMyaS7uw3HnKIlpogU/view?usp=drive_link',  // DEL → TAS
+  HY57:    'https://drive.google.com/file/d/1cA4GJwz8zq9TJhlIYxV9QvgcfUsP3r6I/view?usp=drive_link',  // TAS → UGC
+  TRAIN126:'https://drive.google.com/file/d/1jxUaHGmJiXt787JbdHBL0O1_JbfP2Cw9/view?usp=drive_link',  // Khiva → Bukhara
+  TRAIN709A:'https://drive.google.com/file/d/1PGrcnTEMmsuveN4OFZf0ZOsZS7GiRZ3P/view?usp=drive_link', // Bukhara → Samarkand
+  TRAIN709B:'https://drive.google.com/file/d/1f37ggIF36AhqOcaIw-JEnUycAIfhJ5Q1/view?usp=drive_link', // Samarkand → Tashkent
+  HY761:   'https://drive.google.com/file/d/1YNwCSTO-aCqx1UyhDpQfLxubzxt1JkZf/view?usp=drive_link',  // TAS → ALA
+  KC107:   'https://drive.google.com/file/d/10MZNJ7C-yfwgj4prd15cdQKItwQzgy27/view?usp=drive_link',  // ALA → BSZ
+  KC108:   'https://drive.google.com/file/d/1M4IDwGdX8lRQYqQXYZLxnvjBvmsepHJW/view?usp=drive_link',  // BSZ → ALA
+  KC933:   '', // ALA → BKK (no ticket uploaded yet)
+  TR621:   '', // BKK → SIN (no ticket uploaded yet)
 };
 
 // ══════════════════════════════════════════
@@ -773,8 +784,22 @@ var TICKETS=[
 ];
 
 // ══════════════════════════════════════════
-// DEFAULT PACKING LIST
+// DEFAULT BUDGET ITEMS (from screenshot)
 // ══════════════════════════════════════════
+var DEFAULT_BUDGET=[
+  {id:mkId(),name:'Air ticket to Tashkent',cat:'transport',amt:'626.69',cur:'SGD',day:'May 29',sharing:'solo',note:'Flights SIN-DEL-TAS'},
+  {id:mkId(),name:'Air ticket back to Singapore',cat:'transport',amt:'590.79',cur:'SGD',day:'Jun 26',sharing:'solo',note:'BKK-SIN'},
+  {id:mkId(),name:'Train to Bukhara',cat:'transport',amt:'28.54',cur:'SGD',day:'Jun 2',sharing:'solo',note:'Train 126 Khiva→Bukhara'},
+  {id:mkId(),name:'Flight – Tashkent to Khiva',cat:'transport',amt:'129.00',cur:'SGD',day:'May 30',sharing:'solo',note:'HY57 TAS→UGC'},
+  {id:mkId(),name:'2 Train tickets to Tashkent',cat:'transport',amt:'54.73',cur:'SGD',day:'Jun 10',sharing:'shared',note:'2 tickets · Sharq train'},
+  {id:mkId(),name:'Train to Samarkand',cat:'transport',amt:'23.24',cur:'SGD',day:'Jun 5',sharing:'solo',note:'Train 709 Bukhara→Samarkand'},
+  {id:mkId(),name:'Uz Visa',cat:'other',amt:'49.72',cur:'SGD',day:'Apr 27',sharing:'solo',note:'Uzbekistan e-Visa'},
+  {id:mkId(),name:'TJ Visa',cat:'other',amt:'40.63',cur:'SGD',day:'Apr 27',sharing:'solo',note:'Tajikistan e-Visa'},
+  {id:mkId(),name:'Flight to Bishkek (Round Trip)',cat:'transport',amt:'237.70',cur:'SGD',day:'Jun 18',sharing:'solo',note:'KC107 ALA→BSZ + KC108 BSZ→ALA'},
+  {id:mkId(),name:'Khiva Hotel',cat:'stay',amt:'142.60',cur:'SGD',day:'May 2',sharing:'solo',note:'Said-Maxsum'},
+  {id:mkId(),name:'Deposit for Song Kul tour',cat:'exp',amt:'67.34',cur:'SGD',day:'Jun 19',sharing:'solo',note:'Yurt stay & horse riding'},
+  {id:mkId(),name:'Almaty Hotel',cat:'stay',amt:'283.64',cur:'SGD',day:'Jun 13',sharing:'solo',note:'The First Apart Hotel'},
+];
 var DEFAULT_PACKING={
   'Clothing':['Lightweight shirts x5','Trousers/long pants x2','Shorts x2','Underwear x7','Socks x7','Fleece/warm layer (Song Kul near 0°C)','Rain jacket / windbreaker','Swimwear','Comfortable walking shoes','Sandals','Warm hat & gloves (for Song Kul)'],
   'Toiletries':['Sunscreen SPF 50+','Lip balm with SPF','Insect repellent','Travel towel','Shampoo & conditioner','Toothbrush & toothpaste','Hand sanitiser','Wet wipes'],
@@ -1149,7 +1174,7 @@ async function init(){
   if(!location.hash||location.hash==='#')history.replaceState(null,'',location.href.split('#')[0]+'#'+ROOM_ID);
   buildHTML();
   // Load itinerary, budget, packing in parallel
-  var budgetData=await loadBudget();BUDGET_ITEMS=budgetData||[];
+  var budgetData=await loadBudget();BUDGET_ITEMS=budgetData&&budgetData.length?budgetData:JSON.parse(JSON.stringify(DEFAULT_BUDGET));
   var packData=await loadPacking();
   if(packData){PACK_DATA=packData;}else{
     Object.keys(DEFAULT_PACKING).forEach(function(section){
