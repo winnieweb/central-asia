@@ -53,20 +53,21 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 .ib-close{background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center;}
 @media(display-mode:standalone){.install-banner{display:none;}}
 
-/* HERO — Dynamic Island / notch safe area handled here */
+/* HERO — Dynamic Island safe area
+   iPhone 17 Pro Dynamic Island = 59pt + status bar items below it ≈ 59px total.
+   We use max() so it adapts: at least 72px in browser, or safe-area-inset + 18px */
 .hero{
   background:linear-gradient(160deg,#FFE4F0 0%,#F0E8FF 50%,#E8F4FF 100%);
-  /* Critical: top padding = safe-area-inset-top + extra breathing room */
-  padding-top:max(calc(var(--safe-top) + 20px), 44px);
+  padding-top:max(calc(env(safe-area-inset-top) + 18px), 72px);
   padding-left:22px; padding-right:22px; padding-bottom:22px;
   position:relative; overflow:hidden;
   border-bottom:1px solid var(--sep);
 }
-/* In standalone PWA the status bar is overlaid, needs more room */
+/* Standalone PWA: status bar overlays the app — needs even more top space */
 @media(display-mode:standalone){
-  .hero{ padding-top:max(calc(var(--safe-top) + 16px), 56px); }
+  .hero{ padding-top:max(calc(env(safe-area-inset-top) + 16px), 72px); }
 }
-.hero::before{content:'🕌 🌸 ✨';position:absolute;right:-8px;top:max(calc(var(--safe-top) + 14px),28px);font-size:26px;opacity:0.22;letter-spacing:5px;pointer-events:none;}
+.hero::before{content:'🕌 🌸 ✨';position:absolute;right:-8px;top:max(calc(env(safe-area-inset-top) + 14px),36px);font-size:26px;opacity:0.22;letter-spacing:5px;pointer-events:none;}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,6.5vw,32px);line-height:1.1;margin-bottom:4px;background:linear-gradient(135deg,#D4607A 0%,#8E5BB0 60%,#5B8FBF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:13px;color:var(--text3);margin-bottom:14px;}
@@ -201,13 +202,12 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 .budget-total-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
 .budget-total{font-family:'DM Serif Display',serif;font-size:32px;color:var(--text1);letter-spacing:-.02em;}
 .budget-currency{font-size:14px;color:var(--text3);margin-left:3px;}
-/* Category stat row */
-.budget-cats-row{display:flex;gap:8px;margin-top:14px;overflow-x:auto;scrollbar-width:none;}
-.budget-cats-row::-webkit-scrollbar{display:none;}
-.bstat{flex-shrink:0;background:rgba(255,255,255,0.65);border-radius:10px;padding:8px 10px;text-align:center;backdrop-filter:blur(4px);min-width:68px;}
-.bstat-icon{font-size:16px;}
-.bstat-label{font-size:9px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px;}
-.bstat-amt{font-size:13px;font-weight:700;color:var(--text1);margin-top:2px;}
+/* Category stat row — grid so all 5 always fit */
+.budget-cats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px;}
+.bstat{background:rgba(255,255,255,0.65);border-radius:10px;padding:8px 4px;text-align:center;backdrop-filter:blur(4px);}
+.bstat-icon{font-size:15px;}
+.bstat-label{font-size:8px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bstat-amt{font-size:12px;font-weight:700;color:var(--text1);margin-top:2px;}
 /* Budget item card */
 .budget-item{display:flex;align-items:center;gap:10px;border-radius:10px;padding:10px 12px;margin-bottom:6px;border:1.5px solid transparent;box-shadow:0 1px 6px rgba(180,100,140,0.05);}
 .budget-item.cat-transport{background:var(--bcat-transport-bg);border-color:rgba(106,171,207,0.22);}
@@ -327,10 +327,10 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
   <div id="map-view" class="tab-pane">
     <div class="section-heading">Map <span>View</span> 🗺️</div>
     <div class="map-container">
-      <!-- Google Maps showing the full Central Asia route -->
+      <!-- Embeds the user's saved Google Maps list via the places lat/lng -->
       <iframe class="map-frame"
-        src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d12285762.83826939!2d61.23199569550781!3d42.09388284179688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x38ae8b0cc379e9c3%3A0xa5boday5!2sKhiva%2C+Uzbekistan!3m2!1d41.3775!2d60.3555!4m5!1s0x3f4d19e9b7c7ca55%3A0x1!2sBukhara%2C+Uzbekistan!3m2!1d39.7681!2d64.4556!4m5!1s0x3f4fe35d8a68f32b%3A0x1!2sSamarkand%2C+Uzbekistan!3m2!1d39.6542!2d66.9597!4m5!1s0x38ae8b0cc379e9c3%3A0x1!2sTashkent%2C+Uzbekistan!3m2!1d41.2995!2d69.2401!4m5!1s0x38360eec7c1c3e27%3A0x1!2sAlmaty%2C+Kazakhstan!3m2!1d43.2220!2d76.8512!4m5!1s0x38b6c7a8d7e7f3c1%3A0x1!2sBishkek%2C+Kyrgyzstan!3m2!1d42.8746!2d74.5698!4m5!1s0x38b4b0c4b3d4f321%3A0x1!2sSong+Kul+Lake%2C+Kyrgyzstan!3m2!1d41.8328!2d75.1423!4m5!1s0x38b4a7b0c3d4f321%3A0x1!2sKol+Ukok%2C+Kyrgyzstan!3m2!1d42.1!2d74.8!4m5!1s0x38b3c7a8d7e7f321%3A0x1!2sAla+Archa+National+Park%2C+Kyrgyzstan!3m2!1d42.5831!2d74.4964!5e0!3m2!1sen!2ssg!4v1"
-        title="Central Asia Trip Map"
+        src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d10299636!2d68.5!3d41.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e0!4m5!1s0x38b17e18e1de0051%3A0x1eb74f1eb3b2c9dd!2sKhiva%2C+Uzbekistan!3m2!1d41.378611!2d60.355556!4m5!1s0x3f4d19e9b7c7ca55%3A0xe7a65f56a5bbdb64!2sBukhara%2C+Uzbekistan!3m2!1d39.7745944!2d64.4282789!4m5!1s0x3f4fe35d8a68f32b%3A0xf65b5f1efbecb45e!2sSamarkand%2C+Uzbekistan!3m2!1d39.6546736!2d66.9597576!4m5!1s0x38ae8b0cc379e9c3%3A0xa5bbb49d5f83d7f!2sTashkent%2C+Uzbekistan!3m2!1d41.299496!2d69.240073!4m5!1s0x38360eec7c1c3e27%3A0x2cd0e8b83e0ff87f!2sAlmaty%2C+Kazakhstan!3m2!1d43.238293!2d76.889709!4m5!1s0x38b6c7a8d7e7f3c1%3A0x1b8a8c7a8f3f3f1!2sBishkek%2C+Kyrgyzstan!3m2!1d42.8746212!2d74.5697617!4m5!1s0x38b493b95aa14b69%3A0x6a0e9f3c44d6ef21!2sSong-K%C3%B6l%2C+Kyrgyzstan!3m2!1d41.8378!2d75.1269!5e0!3m2!1sen!2ssg!4v1716000000000"
+        title="Central Asia Trip — Saved Places"
         style="border:0;"
         allowfullscreen=""
         loading="lazy"
