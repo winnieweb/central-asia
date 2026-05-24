@@ -326,27 +326,6 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
   </div>
 
   <!-- ═══ MAP ═══ -->
-  <div id="map-view" class="tab-pane">
-    <div class="section-heading">Map <span>View</span> 🗺️</div>
-    <div class="map-container">
-      <!-- Embeds the user's saved Google Maps list via the places lat/lng -->
-      <iframe class="map-frame"
-        src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d10299636!2d68.5!3d41.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e0!4m5!1s0x38b17e18e1de0051%3A0x1eb74f1eb3b2c9dd!2sKhiva%2C+Uzbekistan!3m2!1d41.378611!2d60.355556!4m5!1s0x3f4d19e9b7c7ca55%3A0xe7a65f56a5bbdb64!2sBukhara%2C+Uzbekistan!3m2!1d39.7745944!2d64.4282789!4m5!1s0x3f4fe35d8a68f32b%3A0xf65b5f1efbecb45e!2sSamarkand%2C+Uzbekistan!3m2!1d39.6546736!2d66.9597576!4m5!1s0x38ae8b0cc379e9c3%3A0xa5bbb49d5f83d7f!2sTashkent%2C+Uzbekistan!3m2!1d41.299496!2d69.240073!4m5!1s0x38360eec7c1c3e27%3A0x2cd0e8b83e0ff87f!2sAlmaty%2C+Kazakhstan!3m2!1d43.238293!2d76.889709!4m5!1s0x38b6c7a8d7e7f3c1%3A0x1b8a8c7a8f3f3f1!2sBishkek%2C+Kyrgyzstan!3m2!1d42.8746212!2d74.5697617!4m5!1s0x38b493b95aa14b69%3A0x6a0e9f3c44d6ef21!2sSong-K%C3%B6l%2C+Kyrgyzstan!3m2!1d41.8378!2d75.1269!5e0!3m2!1sen!2ssg!4v1716000000000"
-        title="Central Asia Trip — Saved Places"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <div class="map-legend">
-        <div class="map-legend-title">Key Destinations</div>
-        <div class="legend-row"><span class="legend-dot" style="background:var(--uz)"></span>🇺🇿 Khiva · Bukhara · Samarkand · Tashkent</div>
-        <div class="legend-row"><span class="legend-dot" style="background:var(--kz)"></span>🇰🇿 Almaty · Charyn · Big Almaty Lake</div>
-        <div class="legend-row"><span class="legend-dot" style="background:var(--kg)"></span>🇰🇬 Bishkek · Kochkor · Song Kul · Kol Ukok</div>
-      </div>
-    </div>
-    <button class="budget-add-btn" style="margin-top:14px;background:linear-gradient(135deg,var(--kz2),var(--kg2));border-color:var(--kz);color:var(--kz)" onclick="openLink('https://maps.google.com/maps?q=Samarkand,Uzbekistan')">🗺️ Open in Google Maps</button>
-  </div>
 
   <!-- ═══ TICKETS ═══ -->
   <div id="tickets-view" class="tab-pane">
@@ -411,7 +390,6 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 <!-- BOTTOM NAV — 5 tabs -->
 <div class="bottom-nav">
   <button class="nav-btn active" id="nav-itin" onclick="switchTab('itinerary')"><span class="nb-icon">🗓️</span><span class="nb-label">Trips</span></button>
-  <button class="nav-btn" id="nav-map"     onclick="switchTab('map')">    <span class="nb-icon">🗺️</span><span class="nb-label">Map</span></button>
   <button class="nav-btn" id="nav-tickets" onclick="switchTab('tickets')"><span class="nb-icon">🎫</span><span class="nb-label">Tickets</span></button>
   <button class="nav-btn" id="nav-budget"  onclick="switchTab('budget')"> <span class="nb-icon">💸</span><span class="nb-label">Budget</span></button>
   <button class="nav-btn" id="nav-packing" onclick="switchTab('packing')"><span class="nb-icon">🎒</span><span class="nb-label">Packing</span></button>
@@ -1075,7 +1053,7 @@ function addCustomPack(){
 // ══════════════════════════════════════════
 // TAB SWITCHING
 // ══════════════════════════════════════════
-var TAB_MAP={itinerary:'nav-itin',map:'nav-map',tickets:'nav-tickets',budget:'nav-budget',packing:'nav-packing'};
+var TAB_MAP={itinerary:'nav-itin',tickets:'nav-tickets',budget:'nav-budget',packing:'nav-packing'};
 function switchTab(tab){
   Object.keys(TAB_MAP).forEach(function(t){
     var p=document.getElementById(t+'-view');if(p)p.classList.remove('active');
