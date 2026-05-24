@@ -240,6 +240,8 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 .pack-item.checked .pack-checkbox{background:var(--pink);border-color:var(--pink);color:#fff;}
 .pack-label{flex:1;font-size:13px;font-weight:500;color:var(--text1);cursor:pointer;}
 .pack-item.checked .pack-label{text-decoration:line-through;color:var(--text3);}
+.pack-item-edit{background:none;border:none;color:var(--text4);font-size:14px;cursor:pointer;padding:3px 4px;flex-shrink:0;line-height:1;-webkit-tap-highlight-color:transparent;}
+.pack-item-edit:active{color:var(--lav);}
 .pack-item-del{background:none;border:none;color:var(--text4);font-size:16px;cursor:pointer;padding:3px 5px;flex-shrink:0;line-height:1;-webkit-tap-highlight-color:transparent;}
 .pack-item-del:active{color:var(--red);}
 .pack-add-row{display:flex;gap:8px;margin-top:6px;}
@@ -523,15 +525,15 @@ function tp(text){return{id:mkId(),type:'tip',name:text,sub:'',pnr:'',note:'',li
 // TICKET DRIVE LINKS — paste your Google Drive share URLs here
 // ══════════════════════════════════════════
 var TL={
-  AI2383:  'https://drive.google.com/file/d/1RRTLnBPMQI--tp0xqNvvJZudS0uA2U2R/view?usp=drive_link',  // SIN → DEL
-  AI7109:  'https://drive.google.com/file/d/1XUkNuYUQf8omZpbMyaS7uw3HnKIlpogU/view?usp=drive_link',  // DEL → TAS
-  HY57:    'https://drive.google.com/file/d/1cA4GJwz8zq9TJhlIYxV9QvgcfUsP3r6I/view?usp=drive_link',  // TAS → UGC
-  TRAIN126:'https://drive.google.com/file/d/1jxUaHGmJiXt787JbdHBL0O1_JbfP2Cw9/view?usp=drive_link',  // Khiva → Bukhara
-  TRAIN709A:'https://drive.google.com/file/d/1PGrcnTEMmsuveN4OFZf0ZOsZS7GiRZ3P/view?usp=drive_link', // Bukhara → Samarkand
-  TRAIN709B:'https://drive.google.com/file/d/1f37ggIF36AhqOcaIw-JEnUycAIfhJ5Q1/view?usp=drive_link', // Samarkand → Tashkent
-  HY761:   'https://drive.google.com/file/d/1YNwCSTO-aCqx1UyhDpQfLxubzxt1JkZf/view?usp=drive_link',  // TAS → ALA
-  KC107:   'https://drive.google.com/file/d/10MZNJ7C-yfwgj4prd15cdQKItwQzgy27/view?usp=drive_link',  // ALA → BSZ
-  KC108:   'https://drive.google.com/file/d/1M4IDwGdX8lRQYqQXYZLxnvjBvmsepHJW/view?usp=drive_link',  // BSZ → ALA
+  AI2383:  'https://drive.google.com/file/d/1RRTLnBPMQI--tp0xqNvvJZudS0uA2U2R/view?usp=sharing',  // SIN → DEL
+  AI7109:  'https://drive.google.com/file/d/1XUkNuYUQf8omZpbMyaS7uw3HnKIlpogU/view?usp=sharing',  // DEL → TAS
+  HY57:    'https://drive.google.com/file/d/1cA4GJwz8zq9TJhlIYxV9QvgcfUsP3r6I/view?usp=sharing',  // TAS → UGC
+  TRAIN126:'https://drive.google.com/file/d/1jxUaHGmJiXt787JbdHBL0O1_JbfP2Cw9/view?usp=sharing',  // Khiva → Bukhara
+  TRAIN709A:'https://drive.google.com/file/d/1PGrcnTEMmsuveN4OFZf0ZOsZS7GiRZ3P/view?usp=sharing', // Bukhara → Samarkand
+  TRAIN709B:'https://drive.google.com/file/d/1f37ggIF36AhqOcaIw-JEnUycAIfhJ5Q1/view?usp=sharing', // Samarkand → Tashkent
+  HY761:   'https://drive.google.com/file/d/1YNwCSTO-aCqx1UyhDpQfLxubzxt1JkZf/view?usp=sharing',  // TAS → ALA
+  KC107:   'https://drive.google.com/file/d/10MZNJ7C-yfwgj4prd15cdQKItwQzgy27/view?usp=sharing',  // ALA → BSZ
+  KC108:   'https://drive.google.com/file/d/1M4IDwGdX8lRQYqQXYZLxnvjBvmsepHJW/view?usp=sharing',  // BSZ → ALA
   KC933:   '', // ALA → BKK (no ticket uploaded yet)
   TR621:   '', // BKK → SIN (no ticket uploaded yet)
 };
@@ -1017,9 +1019,12 @@ function renderPacking(){
     html+='<div class="pack-section">'+
       '<div class="pack-section-title">'+esc(section)+'</div>';
     PACK_DATA[section].forEach(function(it,idx){
-      html+='<div class="pack-item'+(it.checked?' checked':'')+'" onclick="togglePack(\''+esc(section)+'\','+idx+')">'+
-        '<div class="pack-checkbox">'+(it.checked?'✓':'')+'</div>'+
-        '<div class="pack-label">'+esc(it.label)+'</div>'+
+      var secE=esc(section).replace(/&amp;/g,'__AMP__'); // safe for onclick attr
+      html+='<div class="pack-item'+(it.checked?' checked':'')+'">'+
+        '<div class="pack-checkbox" onclick="togglePack(\''+secE+'\','+idx+')">'+(it.checked?'✓':'')+'</div>'+
+        '<div class="pack-label" onclick="togglePack(\''+secE+'\','+idx+'\')">'+esc(it.label)+'</div>'+
+        '<button class="pack-item-edit" onclick="editPack(\''+secE+'\','+idx+')" title="Edit">✎</button>'+
+        '<button class="pack-item-del" onclick="deletePack(\''+secE+'\','+idx+')" title="Delete">×</button>'+
       '</div>';
     });
     html+='</div>';
@@ -1028,21 +1033,43 @@ function renderPacking(){
 }
 
 function togglePack(section,idx){
-  if(!PACK_DATA[section])return;
-  PACK_DATA[section][idx].checked=!PACK_DATA[section][idx].checked;
-  renderPacking();
-  savePacking(PACK_DATA);
+  var s=section.replace(/__AMP__/g,'&');
+  if(!PACK_DATA[s])return;
+  PACK_DATA[s][idx].checked=!PACK_DATA[s][idx].checked;
+  renderPacking();savePacking(PACK_DATA);
+}
+
+function deletePack(section,idx){
+  var s=section.replace(/__AMP__/g,'&');
+  if(!PACK_DATA[s])return;
+  PACK_DATA[s].splice(idx,1);
+  if(PACK_DATA[s].length===0)delete PACK_DATA[s];
+  renderPacking();savePacking(PACK_DATA);
+}
+
+function editPack(section,idx){
+  var s=section.replace(/__AMP__/g,'&');
+  if(!PACK_DATA[s])return;
+  var cur=PACK_DATA[s][idx].label;
+  var newLabel=prompt('Edit item:',cur);
+  if(newLabel===null)return; // cancelled
+  newLabel=newLabel.trim();
+  if(!newLabel)return;
+  PACK_DATA[s][idx].label=newLabel;
+  renderPacking();savePacking(PACK_DATA);
 }
 
 function addCustomPack(){
   var inp=document.getElementById('packNewItem');
+  var catSel=document.getElementById('packNewCat');
   var val=inp.value.trim();
   if(!val)return;
-  if(!PACK_DATA['Custom'])PACK_DATA['Custom']=[];
-  PACK_DATA['Custom'].push({label:val,checked:false});
+  var cat=catSel?catSel.value:'Custom';
+  cat=cat.replace(/&amp;/g,'&');
+  if(!PACK_DATA[cat])PACK_DATA[cat]=[];
+  PACK_DATA[cat].push({label:val,checked:false});
   inp.value='';
-  renderPacking();
-  savePacking(PACK_DATA);
+  renderPacking();savePacking(PACK_DATA);
 }
 
 // ══════════════════════════════════════════
