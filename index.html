@@ -647,13 +647,14 @@ d614:[
   ac('Kok Zhailau Hike / Кок-Жайляу','3h up · 2h down. Bus No.12 → "Akbulak (Rodnik / Prosveshchenets)" stop → first road to the left','https://www.komoot.com/smarttour/24830894'),
   tp('🥾 Start early. Wear layers. Komoot route: komoot.com/smarttour/24830894'),
 ],
-/* ── Day 18 · Jun 15 ── Charyn Canyon */
+/* ── Day 18 · Jun 15 ── Charyn Canyon Day Tour (GetYourGuide) */
 d615:[
   ht('The First Apart Hotel','Almaty','https://maps.google.com/?q=The+First+Apart+Hotel+Almaty'),
+  {id:mkId(),type:'activity',name:'🎫 Charyn Canyon, Black Canyon, Kolsai & Kaindy Lakes Day Trip',sub:'GetYourGuide · Booking ref: GYGFWV7Y56V9',pnr:'',note:'Shared tour · 2 pax · SGD 166.46 total\nPickup 4:30AM — Baitursynov 104 (opposite Astana International Hotel large bus stop) · Look for van with Panda stickers',link:'https://www.getyourguide.com/booking/LK8480I1GGRD3IB3G0JY649T9CEUCJC7'},
   ac('Charyn & Black Canyon','Kazakhstan\'s Grand Canyon — 200m deep red rock formations','https://maps.google.com/?q=Charyn+Canyon+Kazakhstan'),
-  ac('Kolsai Lakes & Kaindy Lake','Submerged forest — turquoise water with emerging tree trunks','https://maps.google.com/?q=Kaindy+Lake+Kazakhstan'),
-  ac('Book via GetYourGuide','Full day tour with transport','https://www.getyourguide.com/almaty-city-l1414/almaty-charyn-canyon-kolsay-and-kaindy-lakes-day-trip-t565634/'),
-  tp('⏰ Very long day 12–14h. Start early, bring warm layers.'),
+  ac('Kolsai Lakes','Series of glacial lakes in the Tian Shan mountains','https://maps.google.com/?q=Kolsai+Lakes+Kazakhstan'),
+  ac('Kaindy Lake','Submerged forest — turquoise water with tree trunks emerging from the surface','https://maps.google.com/?q=Kaindy+Lake+Kazakhstan'),
+  tp('⏰ VERY EARLY start — pickup 4:30AM sharp! Long day 12–14h. Bring warm layers, snacks & water.'),
 ],
 /* ── Day 19 · Jun 16 ── Big Almaty Lake */
 d616:[
@@ -806,7 +807,7 @@ var DEFAULT_PACKING={
 // SHARED STORAGE
 // ══════════════════════════════════════════
 var ROOM_ID='';
-var ROOM_LOCAL='ca_room_v8';
+var ROOM_LOCAL='ca_room_v9';
 function getRoomId(){var h=location.hash.replace('#','').trim();if(h&&/^[a-z0-9]{10,}$/i.test(h))return h;try{var r=localStorage.getItem(ROOM_LOCAL);if(!r){r=[1,2,3].map(function(){return Math.random().toString(36).slice(2,5);}).join('');localStorage.setItem(ROOM_LOCAL,r);}return r;}catch(e){return 'trip'+Date.now().toString(36);}}
 function sKey(day){return 'ca8:'+ROOM_ID+':'+day;}
 function sBudgetKey(){return 'ca8:budget:'+ROOM_ID;}
