@@ -390,7 +390,7 @@ body{background:var(--bg);color:var(--text1);font-family:'DM Sans',-apple-system
 <!-- BOTTOM NAV — 5 tabs -->
 <div class="bottom-nav">
   <button class="nav-btn active" id="nav-itin" onclick="switchTab('itinerary')"><span class="nb-icon">🗓️</span><span class="nb-label">Trips</span></button>
-  <button class="nav-btn" id="nav-tickets" onclick="switchTab('tickets')"><span class="nb-icon">🎫</span><span class="nb-label">Tickets</span></button>
+  <button class="nav-btn" id="nav-tickets" onclick="switchTab('tickets')"><span class="nb-icon">📄</span><span class="nb-label">Docs</span></button>
   <button class="nav-btn" id="nav-budget"  onclick="switchTab('budget')"> <span class="nb-icon">💸</span><span class="nb-label">Budget</span></button>
   <button class="nav-btn" id="nav-packing" onclick="switchTab('packing')"><span class="nb-icon">🎒</span><span class="nb-label">Packing</span></button>
 </div>
@@ -927,13 +927,27 @@ function renderTickets(){
       '<div class="ticket-pnr">'+esc(t.pnr)+'</div>'+
       '<div class="ticket-badges">'+
         '<button class="link-badge '+cls+'" onclick="openLink(\''+safeUrl(t.search)+'\')">'+lbl+' ↗</button>'+
-        (t.gdrive?'<button class="link-badge lb-ticket" onclick="openLink(\''+safeUrl(t.gdrive)+'\')">🎫 View Ticket</button>':'<span class="ticket-placeholder">🎫 Paste Drive link in TL</span>')+
+        (t.gdrive?'<button class="link-badge lb-ticket" onclick="openLink(\''+safeUrl(t.gdrive)+'\')">📄 View Document</button>':'<span class="ticket-placeholder">📄 No file uploaded</span>')+
       '</div>'+
     '</div>';
   }
+  function docCard(d){
+    return '<div class="ticket-card" style="border-left:4px solid var(--lav);">'+
+      '<div class="ticket-route">'+d.icon+' '+esc(d.name)+'</div>'+
+      '<div class="ticket-detail">'+esc(d.detail)+'</div>'+
+      (d.pnr?'<div class="ticket-pnr">'+esc(d.pnr)+'</div>':'')+
+      '<div class="ticket-badges">'+
+        (d.link?'<button class="link-badge lb-ticket" onclick="openLink(\''+safeUrl(d.link)+'\')">📄 View Document</button>':'<span class="ticket-placeholder">📄 No file uploaded</span>')+
+      '</div>'+
+    '</div>';
+  }
+  var docs=[
+    {icon:'🛂',name:'Uzbekistan e-Visa',detail:'Valid for entry into Uzbekistan',pnr:'',link:TL.UZ_EVISA},
+  ];
   document.getElementById('tickets-content').innerHTML=
     '<div class="ticket-group"><div class="ticket-group-title">✈️ Flights</div>'+flights.map(card).join('')+'</div>'+
-    '<div class="ticket-group"><div class="ticket-group-title">🚂 Trains</div>'+trains.map(card).join('')+'</div>';
+    '<div class="ticket-group"><div class="ticket-group-title">🚂 Trains</div>'+trains.map(card).join('')+'</div>'+
+    '<div class="ticket-group"><div class="ticket-group-title">🛂 Visas &amp; Documents</div>'+docs.map(docCard).join('')+'</div>';
 }
 
 // ══════════════════════════════════════════
