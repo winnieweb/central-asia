@@ -810,15 +810,44 @@ var DEFAULT_PACKING={
 var ROOM_ID='';
 var ROOM_LOCAL='ca_room_v9';
 function getRoomId(){var h=location.hash.replace('#','').trim();if(h&&/^[a-z0-9]{10,}$/i.test(h))return h;try{var r=localStorage.getItem(ROOM_LOCAL);if(!r){r=[1,2,3].map(function(){return Math.random().toString(36).slice(2,5);}).join('');localStorage.setItem(ROOM_LOCAL,r);}return r;}catch(e){return 'trip'+Date.now().toString(36);}}
-function sKey(day){return 'ca8:'+ROOM_ID+':'+day;}
-function sBudgetKey(){return 'ca8:budget:'+ROOM_ID;}
-function sPackKey(){return 'ca8:packing:'+ROOM_ID;}
-async function loadDay(day){try{var r=await window.storage.get(sKey(day),true);return r?sanitizeItems(JSON.parse(r.value)):null;}catch(e){return null;}}
-async function saveDay(day,items){try{await window.storage.set(sKey(day),JSON.stringify(items),true);}catch(e){}}
-async function loadBudget(){try{var r=await window.storage.get(sBudgetKey(),true);return r?JSON.parse(r.value):[];}catch(e){return[];}}
-async function saveBudget(items){try{await window.storage.set(sBudgetKey(),JSON.stringify(items),true);}catch(e){}}
-async function loadPacking(){try{var r=await window.storage.get(sPackKey(),true);return r?JSON.parse(r.value):null;}catch(e){return null;}}
-async function savePacking(data){try{await window.storage.set(sPackKey(),JSON.stringify(data),true);}catch(e){}}
+function sKey(day){return 'ca9:'+ROOM_ID+':'+day;}
+function sBudgetKey(){return 'ca9:budget:'+ROOM_ID;}
+function sPackKey(){return 'ca9:packing:'+ROOM_ID;}
+
+// ── Storage: localStorage first (works offline on GitHub Pages PWA),
+//            window.storage as fallback when inside Claude artifact
+function lsGet(key){try{var v=localStorage.getItem(key);return v?JSON.parse(v):null;}catch(e){return null;}}
+function lsSet(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true;}catch(e){return false;}}
+
+async function loadDay(day){
+  // Try localStorage first (fast, offline-capable)
+  var local=lsGet(sKey(day));
+  if(local!==null)return sanitizeItems(local);
+  // Fall back to window.storage (Claude artifact env)
+  try{var r=await window.storage.get(sKey(day),true);return r?sanitizeItems(JSON.parse(r.value)):null;}catch(e){return null;}
+}
+async function saveDay(day,items){
+  lsSet(sKey(day),items); // always save locally
+  try{await window.storage.set(sKey(day),JSON.stringify(items),true);}catch(e){}
+}
+async function loadBudget(){
+  var local=lsGet(sBudgetKey());
+  if(local!==null)return local;
+  try{var r=await window.storage.get(sBudgetKey(),true);return r?JSON.parse(r.value):[];}catch(e){return[];}
+}
+async function saveBudget(items){
+  lsSet(sBudgetKey(),items);
+  try{await window.storage.set(sBudgetKey(),JSON.stringify(items),true);}catch(e){}
+}
+async function loadPacking(){
+  var local=lsGet(sPackKey());
+  if(local!==null)return local;
+  try{var r=await window.storage.get(sPackKey(),true);return r?JSON.parse(r.value):null;}catch(e){return null;}
+}
+async function savePacking(data){
+  lsSet(sPackKey(),data);
+  try{await window.storage.set(sPackKey(),JSON.stringify(data),true);}catch(e){}
+}
 
 var STATE={};
 var BUDGET_ITEMS=[];
